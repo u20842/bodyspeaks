@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Speaks · ICU-1111</title>
+<meta name="description" content="Your body has been trying to tell you something. Discover what your symptoms may be communicating — and which pattern is running underneath.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root {
+  --navy:#0a1628;--navy-mid:#111e35;--navy-soft:#1a2d4a;
+  --teal:#00c8b4;--teal-dim:rgba(0,200,180,0.15);--teal-glow:rgba(0,200,180,0.07);
+  --gold:#c9a84c;--gold-dim:rgba(201,168,76,0.15);
+  --cream:#f0ebe0;--cream-dim:rgba(240,235,224,0.06);
+  --text:#e8e2d9;--text-mid:rgba(232,226,217,0.65);--text-light:rgba(232,226,217,0.35);
+  --border:rgba(232,226,217,0.08);--border-mid:rgba(232,226,217,0.14);
+  --P:#00c8b4;--A:#c9a84c;--S:#e07060;--T:#8b7ec8;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(0,200,180,0.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(201,168,76,0.04) 0%,transparent 50%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 1.5rem;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--teal);text-decoration:none;}
+.nav-link{font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-mid);padding:0.4rem 1rem;transition:all 0.3s;}
+.nav-link:hover{border-color:var(--teal);color:var(--teal);}
+
+/* PHASE */
+.phase{display:none;}
+.phase.active{display:block;animation:fadeUp 0.5s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* PROGRESS */
+.prog-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width 0.5s ease;z-index:200;}
+
+/* HERO */
+.hero{padding:8.5rem 0 4rem;text-align:center;}
+.eyebrow{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:1.8rem;display:flex;align-items:center;justify-content:center;gap:0.8rem;}
+.eyebrow::before,.eyebrow::after{content:'';display:block;width:28px;height:1px;background:var(--teal);opacity:0.5;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:300;line-height:1.1;margin-bottom:1.4rem;color:var(--cream);}
+h1 em{font-style:italic;color:var(--teal);}
+.hero-sub{font-size:0.86rem;color:var(--text-mid);max-width:520px;margin:0 auto 2rem;line-height:1.85;}
+.disclaimer{font-size:0.63rem;color:var(--text-light);max-width:460px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.1rem;line-height:1.7;}
+
+/* SEARCH */
+.search-section{padding:0.5rem 0 4rem;}
+.sec-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:1.8rem;text-align:center;}
+.search-wrap{position:relative;margin-bottom:1.4rem;}
+.search-input{width:100%;padding:0.95rem 3rem 0.95rem 1.3rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-mid);color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.83rem;font-weight:300;outline:none;transition:all 0.3s;}
+.search-input::placeholder{color:var(--text-light);}
+.search-input:focus{border-color:var(--teal);background:rgba(0,200,180,0.04);}
+.search-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:var(--text-light);pointer-events:none;}
+
+/* FILTERS */
+.cat-filters{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:1.8rem;justify-content:center;}
+.cat-btn{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.38rem 0.85rem;border:1px solid var(--border);background:transparent;color:var(--text-light);cursor:pointer;transition:all 0.2s;font-family:'Montserrat',sans-serif;}
+.cat-btn:hover,.cat-btn.active{border-color:var(--teal);color:var(--teal);background:var(--teal-glow);}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.55rem;}
+.card{padding:0.8rem 1rem;border:1px solid var(--border);background:var(--cream-dim);cursor:pointer;transition:all 0.2s;display:flex;justify-content:space-between;align-items:center;gap:0.6rem;}
+.card:hover{border-color:var(--teal);background:var(--teal-glow);transform:translateX(3px);}
+.card.sel{border-color:var(--teal);background:var(--teal-dim);}
+.card-name{font-size:0.78rem;font-weight:400;}
+.card-cat{font-size:0.57rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-light);margin-top:0.1rem;}
+.card-chk{width:17px;height:17px;border:1px solid var(--border-mid);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.58rem;flex-shrink:0;transition:all 0.2s;}
+.card.sel .card-chk{background:var(--teal);border-color:var(--teal);color:var(--navy);}
+.no-results{text-align:center;color:var(--text-light);font-size:0.8rem;padding:2rem;}
+.sel-count{text-align:center;margin:1.4rem 0 0.4rem;font-size:0.7rem;color:var(--text-mid);}
+.sel-count span{color:var(--teal);font-weight:600;}
+
+/* BUTTONS */
+.btn{display:block;width:100%;max-width:420px;margin:1.3rem auto 0;padding:1.05rem 2rem;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;text-align:center;text-decoration:none;}
+.btn-primary{background:var(--teal);color:var(--navy);}
+.btn-primary:hover{background:#00dfc8;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,200,180,0.3);}
+.btn-primary:disabled{opacity:0.35;cursor:not-allowed;transform:none;}
+.btn-ghost{background:transparent;color:var(--text-mid);border:1px solid var(--border-mid);}
+.btn-ghost:hover{border-color:var(--text-mid);color:var(--text);}
+
+/* EMAIL PHASE */
+.email-wrap{max-width:540px;margin:0 auto;padding:3rem 0 5rem;}
+.phase-h{text-align:center;margin-bottom:2.2rem;}
+.phase-h h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:0.9rem;}
+.phase-h h2 em{font-style:italic;color:var(--teal);}
+.phase-h p{font-size:0.83rem;color:var(--text-mid);line-height:1.85;}
+.sel-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.8rem;justify-content:center;}
+.sel-tag{font-size:0.6rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.28rem 0.65rem;border:1px solid var(--teal);color:var(--teal);background:var(--teal-glow);}
+.form-group{margin-bottom:1.1rem;}
+.form-label{display:block;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.45rem;}
+.form-input{width:100%;padding:0.88rem 1.1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-mid);color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.83rem;font-weight:300;outline:none;transition:all 0.3s;}
+.form-input::placeholder{color:var(--text-light);}
+.form-input:focus{border-color:var(--teal);background:rgba(0,200,180,0.04);}
+.privacy{font-size:0.61rem;color:var(--text-light);text-align:center;margin-top:0.9rem;line-height:1.6;}
+
+/* RESULTS */
+.results-wrap{padding:3rem 0 5rem;}
+.r-greeting{font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.9rem;text-align:center;}
+.r-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:1.1rem;text-align:center;}
+.r-h2 em{font-style:italic;color:var(--gold);}
+.r-intro{font-size:0.83rem;color:var(--text-mid);line-height:1.85;max-width:580px;margin:0 auto 2.5rem;text-align:center;}
+
+/* PRIMARY PATTERN */
+.primary-box{text-align:center;padding:2rem 1.5rem;border:1px solid var(--gold-dim);background:linear-gradient(135deg,rgba(201,168,76,0.05) 0%,transparent 70%);margin-bottom:2rem;}
+.primary-lbl{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.7rem;}
+.primary-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:300;margin-bottom:0.4rem;}
+.primary-sub{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);margin-bottom:1rem;}
+.primary-desc{font-size:0.82rem;color:var(--text-mid);line-height:1.85;max-width:520px;margin:0 auto;}
+
+/* PAST CARDS */
+.past-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin:2rem 0;}
+@media(max-width:560px){.past-grid{grid-template-columns:1fr;}}
+.past-card{padding:1.4rem;border:1px solid;position:relative;overflow:hidden;}
+.past-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.past-card.P{border-color:rgba(0,200,180,0.22);}    .past-card.P::before{background:var(--P);}
+.past-card.A{border-color:rgba(201,168,76,0.22);}   .past-card.A::before{background:var(--A);}
+.past-card.S{border-color:rgba(224,112,96,0.22);}   .past-card.S::before{background:var(--S);}
+.past-card.T{border-color:rgba(139,126,200,0.22);}  .past-card.T::before{background:var(--T);}
+.past-head{display:flex;align-items:center;gap:0.7rem;margin-bottom:0.7rem;}
+.past-letter{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;line-height:1;}
+.past-card.P .past-letter{color:var(--P);} .past-card.A .past-letter{color:var(--A);}
+.past-card.S .past-letter{color:var(--S);} .past-card.T .past-letter{color:var(--T);}
+.past-title{font-size:0.73rem;font-weight:600;letter-spacing:0.04em;}
+.past-sub2{font-size:0.6rem;color:var(--text-light);}
+.past-count{margin-left:auto;font-size:1.4rem;font-weight:300;font-family:'Cormorant Garamond',serif;}
+.past-card.P .past-count{color:var(--P);} .past-card.A .past-count{color:var(--A);}
+.past-card.S .past-count{color:var(--S);} .past-card.T .past-count{color:var(--T);}
+.past-conds{font-size:0.7rem;color:var(--text-mid);line-height:1.75;}
+.past-insight{margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);font-size:0.7rem;color:var(--text-mid);font-style:italic;}
+
+/* HOLISTIC SUMMARY */
+.holistic{margin:2.5rem 0;border:1px solid var(--border-mid);background:linear-gradient(135deg,rgba(0,200,180,0.03) 0%,rgba(201,168,76,0.03) 100%);padding:2rem 2rem 2.2rem;}
+.holistic-lbl{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;}
+.holistic-lbl::after{content:'';flex:1;height:1px;background:var(--teal);opacity:0.2;}
+.holistic h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:1.2rem;}
+.holistic h3 em{font-style:italic;color:var(--teal);}
+.holistic-body{font-size:0.83rem;color:var(--text-mid);line-height:1.95;}
+.holistic-body p{margin-bottom:1rem;}
+.holistic-body p:last-child{margin-bottom:0;}
+.holistic-body strong{color:var(--text);font-weight:500;}
+.pattern-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.2rem 0;}
+.ptag{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border:1px solid;}
+.ptag.P{color:var(--P);border-color:rgba(0,200,180,0.3);}
+.ptag.A{color:var(--A);border-color:rgba(201,168,76,0.3);}
+.ptag.S{color:var(--S);border-color:rgba(224,112,96,0.3);}
+.ptag.T{color:var(--T);border-color:rgba(139,126,200,0.3);}
+
+/* CONDITION RESULTS */
+.cond-section{margin:2rem 0;}
+.cond-section h3{font-size:0.63rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-light);margin-bottom:1.1rem;text-align:center;}
+.result-item{display:flex;align-items:flex-start;gap:0.9rem;padding:0.9rem 1.1rem;margin-bottom:0.45rem;border:1px solid var(--border);background:var(--cream-dim);}
+.r-bar{width:3px;min-height:36px;flex-shrink:0;align-self:stretch;border-radius:2px;}
+.result-item.P .r-bar{background:var(--P);} .result-item.A .r-bar{background:var(--A);}
+.result-item.S .r-bar{background:var(--S);} .result-item.T .r-bar{background:var(--T);}
+.r-name{font-size:0.78rem;font-weight:500;margin-bottom:0.25rem;}
+.r-msg{font-size:0.73rem;color:var(--text-mid);line-height:1.7;}
+.r-tag{font-size:0.57rem;letter-spacing:0.09em;text-transform:uppercase;padding:0.18rem 0.5rem;margin-left:auto;flex-shrink:0;align-self:flex-start;border:1px solid;}
+.result-item.P .r-tag{color:var(--P);border-color:rgba(0,200,180,0.3);}
+.result-item.A .r-tag{color:var(--A);border-color:rgba(201,168,76,0.3);}
+.result-item.S .r-tag{color:var(--S);border-color:rgba(224,112,96,0.3);}
+.result-item.T .r-tag{color:var(--T);border-color:rgba(139,126,200,0.3);}
+
+/* TAGLINE */
+.tagline-block{text-align:center;padding:2.2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:2.5rem 0;}
+.tagline-block blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3.5vw,1.9rem);font-style:italic;font-weight:300;color:var(--cream);line-height:1.5;}
+.tagline-block cite{display:block;margin-top:0.9rem;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);font-style:normal;}
+
+/* CTA */
+.cta-box{text-align:center;padding:3rem 2rem 3.5rem;border:1px solid var(--border-mid);background:linear-gradient(135deg,rgba(0,200,180,0.04) 0%,rgba(201,168,76,0.03) 100%);margin:2rem 0 4rem;}
+.cta-eye{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.1rem;}
+.cta-box h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:1.1rem;}
+.cta-box h2 em{font-style:italic;color:var(--teal);}
+.cta-box p{font-size:0.83rem;color:var(--text-mid);max-width:440px;margin:0 auto 2rem;line-height:1.85;}
+.btn-cal{display:inline-block;padding:1.15rem 2.8rem;background:var(--teal);color:var(--navy);font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+.btn-cal:hover{background:#00dfc8;transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,200,180,0.35);}
+.cta-note{margin-top:0.9rem;font-size:0.63rem;color:var(--text-light);}
+
+footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;font-size:0.63rem;color:var(--text-light);flex-wrap:wrap;gap:0.5rem;}
+footer a{color:var(--teal);text-decoration:none;}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy-soft);border:1px solid var(--teal);color:var(--teal);padding:0.8rem 1.2rem;font-size:0.72rem;letter-spacing:0.05em;z-index:300;opacity:0;transform:translateY(10px);transition:all 0.4s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr;} footer{flex-direction:column;text-align:center;}}
+@media(max-width:380px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="prog-bar" id="prog" style="width:25%"></div>
+<div class="toast" id="toast"></div>
+
+<nav>
+  <a href="https://icu-1111.com" class="nav-brand">ICU-1111 · Body Speaks</a>
+  <a href="https://icu-1111.com" class="nav-link">← Back</a>
+</nav>
+
+<!-- ═══════════════════════════════════ -->
+<!-- PHASE 1: SELECT                    -->
+<!-- ═══════════════════════════════════ -->
+<div id="p1" class="phase active">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">ICU-1111 · Body Speaks</div>
+      <h1>Your body has been<br>trying to tell you<br><em>something.</em></h1>
+      <p class="hero-sub">The body communicates what the mind refuses to process. Select every symptom or condition you're experiencing — or have experienced during periods of high stress.</p>
+      <p class="disclaimer">This is not a medical diagnosis. It is a pattern recognition framework based on the mind-body-identity connection. Always consult your physician for medical concerns.</p>
+    </div>
+  </section>
+  <section class="search-section">
+    <div class="wrap">
+      <p class="sec-label">Select all that apply — be honest with yourself</p>
+      <div class="search-wrap">
+        <input type="text" class="search-input" id="searchInput" placeholder='Try "anxiety", "hypertension", "IBS", "hair loss"...' oninput="filterAll()">
+        <span class="search-icon">⌕</span>
+      </div>
+      <div class="cat-filters" id="cats">
+        <button class="cat-btn active" onclick="setCat('All',this)">All</button>
+        <button class="cat-btn" onclick="setCat('Immune & Inflammatory',this)">Immune</button>
+        <button class="cat-btn" onclick="setCat('Digestive & Gut',this)">Digestive</button>
+        <button class="cat-btn" onclick="setCat('Cardiovascular',this)">Heart</button>
+        <button class="cat-btn" onclick="setCat('Nervous System',this)">Nervous</button>
+        <button class="cat-btn" onclick="setCat('Hormonal & Metabolic',this)">Hormonal</button>
+        <button class="cat-btn" onclick="setCat('Musculoskeletal',this)">Muscles</button>
+        <button class="cat-btn" onclick="setCat('Skin & Hair',this)">Skin</button>
+        <button class="cat-btn" onclick="setCat('Mental & Emotional',this)">Mental</button>
+        <button class="cat-btn" onclick="setCat('Sleep & Energy',this)">Sleep</button>
+        <button class="cat-btn" onclick="setCat('Reproductive',this)">Reproductive</button>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="no-results" id="noRes" style="display:none">No conditions found — try a different term.</div>
+      <p class="sel-count">Selected: <span id="selNum">0</span></p>
+      <button class="btn btn-primary" id="nextBtn" onclick="toEmail()" disabled>See What Your Body Is Saying →</button>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- PHASE 2: EMAIL CAPTURE             -->
+<!-- ═══════════════════════════════════ -->
+<div id="p2" class="phase">
+  <div class="wrap">
+    <div class="email-wrap">
+      <div class="phase-h">
+        <h2>You selected <em id="emailCount">0</em> symptoms.<br>That's not random.</h2>
+        <p>Enter your name and email to receive your full pattern analysis — including the holistic picture of what your body has been carrying, and what that likely means about where you've been.</p>
+      </div>
+      <div class="sel-tags" id="selTagsDisplay"></div>
+      <div class="form-group">
+        <label class="form-label" for="fname">First Name</label>
+        <input type="text" class="form-input" id="fname" placeholder="Your first name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="femail">Email Address</label>
+        <input type="email" class="form-input" id="femail" placeholder="Your email address">
+      </div>
+      <button class="btn btn-primary" onclick="toResults(false)">Reveal My Full Pattern Analysis →</button>
+      <button class="btn btn-ghost" onclick="toResults(true)">Skip — show me results only</button>
+      <p class="privacy">🔒 No spam. Your results will be emailed so you can reference them. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- PHASE 3: RESULTS                   -->
+<!-- ═══════════════════════════════════ -->
+<div id="p3" class="phase">
+  <div class="wrap">
+    <div class="results-wrap">
+      <div class="r-greeting" id="rGreeting">Your Pattern Analysis</div>
+      <h2 class="r-h2">Your body wasn't <em>overreacting.</em><br>It was communicating.</h2>
+      <p class="r-intro" id="rIntro">Based on the symptoms you selected, here is what your body has been trying to communicate — and the pattern most likely running underneath all of it.</p>
+
+      <!-- Primary -->
+      <div class="primary-box" id="primaryBox"></div>
+
+      <!-- PAST framework explainer -->
+      <div style="margin:2rem 0 1rem;padding:1.2rem 1.5rem;border:1px solid var(--border);background:var(--cream-dim);">
+        <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.8rem;">The PAST Framework™ — Anju Redheendran · ICU-1111</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.8rem 2rem;">
+          <span style="font-size:0.78rem;"><span style="color:var(--P);font-weight:600;font-family:Cormorant Garamond,serif;font-size:1.1rem;">P</span>&nbsp;<span style="color:var(--text-mid);">The Pairing — wounds recognize wounds</span></span>
+          <span style="font-size:0.78rem;"><span style="color:var(--A);font-weight:600;font-family:Cormorant Garamond,serif;font-size:1.1rem;">A</span>&nbsp;<span style="color:var(--text-mid);">The Audition — performing for love instead of receiving it</span></span>
+          <span style="font-size:0.78rem;"><span style="color:var(--S);font-weight:600;font-family:Cormorant Garamond,serif;font-size:1.1rem;">S</span>&nbsp;<span style="color:var(--text-mid);">The Squeeze — pressure reveals truth</span></span>
+          <span style="font-size:0.78rem;"><span style="color:var(--T);font-weight:600;font-family:Cormorant Garamond,serif;font-size:1.1rem;">T</span>&nbsp;<span style="color:var(--text-mid);">The Tank — what you carry is what you pour</span></span>
+        </div>
+        <div style="margin-top:0.9rem;font-size:0.72rem;color:var(--text-light);font-style:italic;">&ldquo;You are not living in the past. Your past is living in you.&rdquo; Your symptoms are mapped to whichever principle most closely aligns with the pattern driving them. All four are always shown — dimmed letters indicate patterns not present in this assessment.</div>
+      </div>
+
+      <!-- PAST breakdown -->
+      <div class="past-grid" id="pastGrid"></div>
+
+      <!-- HOLISTIC SUMMARY -->
+      <div class="holistic" id="holisticBox"></div>
+
+      <!-- Individual conditions -->
+      <div class="cond-section">
+        <h3>What each symptom may be signaling</h3>
+        <div id="condList"></div>
+      </div>
+
+      <!-- Tagline -->
+      <div class="tagline-block">
+        <blockquote>"You're not living in the past.<br>Your past is living in you."</blockquote>
+        <cite>— Anju Redheendran · The PAST Framework™ · ICU-1111</cite>
+      </div>
+
+      <!-- Calendly CTA -->
+      <div class="cta-box">
+        <div class="cta-eye">The Next Step</div>
+        <h2>You've seen the pattern.<br>Now let's <em>work with it.</em></h2>
+        <p>A 30-minute discovery call with Anju to identify exactly where you are in the PAST Framework, what's keeping the pattern in place, and what working together could look like.</p>
+        <a href="https://calendly.com/icu1111/30-min-discovery-call" class="btn-cal" target="_blank">Book Your Free Discovery Call →</a>
+        <p class="cta-note">No pressure. No pitch. Just clarity.</p>
+      </div>
+
+      <div style="text-align:center;margin-bottom:2rem;">
+        <button class="btn btn-ghost" onclick="reset()" style="max-width:280px;">Start Over</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© Anju Redheendran · ICU-1111</span>
+  <span><a href="https://icu-1111.com">icu-1111.com</a> · <a href="https://anjuredheendran.com">anjuredheendran.com</a></span>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════
+// DATA — 100 CONDITIONS
+// ═══════════════════════════════════════════════
+const C = [
+  {id:1,name:"Autoimmune flare-ups",cat:"Immune & Inflammatory",past:"T",synonyms:["autoimmune","lupus flare","RA flare","immune attack"],msg:"The body attacking itself mirrors a pattern of self-directed criticism and suppressed worthiness. The Tank is depleted — what you're carrying is turning inward."},
+  {id:2,name:"Chronic inflammation",cat:"Immune & Inflammatory",past:"S",synonyms:["inflammation","inflammatory","swelling","inflamed"],msg:"Persistent inflammation is the body under constant pressure. The Squeeze keeps the inflammatory response perpetually activated."},
+  {id:3,name:"Rheumatoid arthritis",cat:"Immune & Inflammatory",past:"T",synonyms:["RA","rheumatoid","arthritis","joint inflammation","autoimmune arthritis"],msg:"Joints that attack themselves. This pattern connects to accumulated emotional load — what you've carried for others at the expense of what you've held for yourself."},
+  {id:4,name:"Lupus",cat:"Immune & Inflammatory",past:"T",synonyms:["SLE","systemic lupus","lupus erythematosus"],msg:"The immune system unable to distinguish self from other reflects a deep identity pattern — a self defined so long in relation to others that it no longer recognizes its own boundaries."},
+  {id:5,name:"Fibromyalgia",cat:"Immune & Inflammatory",past:"A",synonyms:["fibro","widespread pain","fibromyalgia syndrome","FMS","diffuse pain"],msg:"Widespread pain with no clear origin often accompanies years of emotional performance — smiling, managing, and showing up for everyone while the internal cost accumulates silently."},
+  {id:6,name:"Chronic fatigue syndrome",cat:"Immune & Inflammatory",past:"T",synonyms:["CFS","ME","ME/CFS","myalgic encephalomyelitis","chronic fatigue","always tired","extreme exhaustion"],msg:"Profound exhaustion that rest doesn't fix is the body's signal that the Tank is empty. You've been pouring out without replenishment for a very long time."},
+  {id:7,name:"Psoriasis",cat:"Immune & Inflammatory",past:"S",synonyms:["psoriasis","skin plaques","scaly skin","psoriatic"],msg:"The skin — our first boundary — reacts to sustained pressure. Psoriasis often flares in periods of high external demand when the internal sense of safety collapses."},
+  {id:8,name:"Eczema",cat:"Immune & Inflammatory",past:"A",synonyms:["eczema","atopic dermatitis","itchy skin","skin rash","dermatitis"],msg:"Skin that reacts to irritants mirrors a nervous system perpetually performing and watching for rejection. The surface becomes the site of emotional labor."},
+  {id:9,name:"Multiple sclerosis",cat:"Immune & Inflammatory",past:"T",synonyms:["MS","multiple sclerosis","demyelinating"],msg:"Myelin — the protective sheath — being eroded connects to patterns of self-protection worn thin over years of carrying too much for too long."},
+  {id:10,name:"Inflammatory bowel disease",cat:"Immune & Inflammatory",past:"S",synonyms:["IBD","Crohn's","Crohns","ulcerative colitis","UC","colitis","bowel inflammation"],msg:"The gut under siege. IBD frequently flares under sustained pressure, especially when there is no safe outlet for what the person is absorbing from their environment."},
+  {id:11,name:"Hashimoto's thyroiditis",cat:"Immune & Inflammatory",past:"T",synonyms:["Hashimoto","hypothyroid","underactive thyroid","low thyroid","thyroid autoimmune"],msg:"The thyroid — the regulator of how much you give and how fast you go — being attacked by your own immune system. The body is questioning its own pace and output."},
+  {id:12,name:"Celiac disease",cat:"Immune & Inflammatory",past:"P",synonyms:["celiac","coeliac","gluten intolerance","gluten sensitivity"],msg:"The body unable to tolerate a substance that seems normal to others. The Pairing — recognizing what wounds you in what others absorb without issue — is the pattern."},
+  {id:13,name:"Graves' disease",cat:"Immune & Inflammatory",past:"A",synonyms:["Graves","hyperthyroid","overactive thyroid","Graves disease"],msg:"Overactive thyroid — producing more than is sustainable. The Audition pattern: performing at maximum output, accelerating to maintain approval and avoid perceived failure."},
+  {id:14,name:"Allergies",cat:"Immune & Inflammatory",past:"S",synonyms:["allergies","allergic","allergy","hay fever","seasonal allergies","allergic reaction"],msg:"Hypersensitive immune response to ordinary stimuli reflects a nervous system in chronic Squeeze — threat-detecting even where others sense none."},
+  {id:15,name:"Food sensitivities",cat:"Immune & Inflammatory",past:"P",synonyms:["food sensitivity","food intolerance","food reactions","digestive sensitivity"],msg:"What nourishes others depletes you. The Pairing recognizes this pattern: you absorb the same substances differently because your system has been conditioned to heightened response."},
+  {id:16,name:"Frequent infections",cat:"Immune & Inflammatory",past:"T",synonyms:["frequent infections","getting sick often","low immunity","immune deficiency","sick all the time"],msg:"When the Tank is depleted, immunity lowers. The body's defense system can only operate at the level of resources available — and yours may be chronically overdrawn."},
+  {id:17,name:"Slow wound healing",cat:"Immune & Inflammatory",past:"T",synonyms:["slow healing","wounds won't heal","poor healing","delayed healing"],msg:"The body allocates healing resources last when in survival mode. Chronic stress diverts repair capacity. The Tank pattern: nothing left for self-restoration."},
+  {id:18,name:"Swollen lymph nodes",cat:"Immune & Inflammatory",past:"S",synonyms:["swollen glands","lymph nodes","lymphadenopathy","swollen neck glands"],msg:"The lymphatic system in activation. Sustained Squeeze keeps the system in perpetual high-alert, unable to clear and reset."},
+  {id:19,name:"Chronic sinusitis",cat:"Immune & Inflammatory",past:"A",synonyms:["sinus","sinusitis","sinus infection","chronic sinus","nasal congestion","stuffy nose"],msg:"The nasal passages in ongoing inflammation. Often connected to emotional patterns of filtering what is allowed in and out of your life."},
+  {id:20,name:"Mast cell activation",cat:"Immune & Inflammatory",past:"S",synonyms:["MCAS","mast cell","mast cell syndrome","histamine intolerance","histamine"],msg:"A system that cannot distinguish real threat from perceived threat. The Squeeze trains the body into perpetual defensive posture — responding to everything as an emergency."},
+  {id:21,name:"IBS (Irritable Bowel Syndrome)",cat:"Digestive & Gut",past:"S",synonyms:["IBS","irritable bowel","irritable bowel syndrome","bowel issues","gut pain","abdominal cramps"],msg:"The gut is the second brain. IBS is the body's literal Squeeze response — contracting, cramping, and reacting to what cannot be processed or released."},
+  {id:22,name:"Acid reflux / GERD",cat:"Digestive & Gut",past:"A",synonyms:["acid reflux","GERD","heartburn","indigestion","acid","reflux","gastroesophageal"],msg:"What rises when you lie down. GERD frequently accompanies patterns of swallowing emotions — performing calm while acid builds below the surface."},
+  {id:23,name:"Bloating",cat:"Digestive & Gut",past:"T",synonyms:["bloating","bloated","gas","distended stomach","stomach bloat","belly bloat"],msg:"The gut unable to move efficiently. What is held — emotionally and physically — accumulates. The Tank pattern: everything stays in, nothing releases cleanly."},
+  {id:24,name:"Constipation",cat:"Digestive & Gut",past:"T",synonyms:["constipation","can't go","difficulty having bowel movements","infrequent bowel movements"],msg:"The body holding on. Constipation patterns mirror emotional holding — difficulty releasing control, vulnerability, or experiences never fully processed."},
+  {id:25,name:"Diarrhea / urgency",cat:"Digestive & Gut",past:"S",synonyms:["diarrhea","diarrhoea","loose stools","urgency","bowel urgency","urgent bowel"],msg:"The body expelling under pressure. The Squeeze produces urgency — an uncontrolled release mirroring the experience of chronic overwhelm breaking through containment."},
+  {id:26,name:"Nausea",cat:"Digestive & Gut",past:"A",synonyms:["nausea","nauseous","sick to stomach","queasiness","queasy","feeling sick"],msg:"The stomach's rejection response. Chronic nausea often accompanies sustained emotional performance — the body's signal that something it's being asked to digest doesn't sit right."},
+  {id:27,name:"Loss of appetite",cat:"Digestive & Gut",past:"T",synonyms:["no appetite","loss of appetite","not hungry","can't eat","don't want to eat"],msg:"The Tank depleted past the point of hunger. When survival resources are consumed managing emotional load, the body's appetite signals often go offline."},
+  {id:28,name:"Emotional eating",cat:"Digestive & Gut",past:"A",synonyms:["emotional eating","stress eating","binge eating","comfort eating","food cravings","eating feelings"],msg:"Using food to perform comfort for yourself. The Audition pattern: meeting your own unmet need through a substitute that doesn't require you to be seen or received."},
+  {id:29,name:"Gastritis",cat:"Digestive & Gut",past:"S",synonyms:["gastritis","stomach inflammation","stomach pain","gastric pain","stomach lining"],msg:"The stomach lining under siege. Gastritis is the Squeeze made visceral — sustained pressure breaking down the body's own protective barriers from the inside out."},
+  {id:30,name:"Leaky gut syndrome",cat:"Digestive & Gut",past:"P",synonyms:["leaky gut","intestinal permeability","gut permeability","leaky gut syndrome"],msg:"Boundaries that no longer hold. The gut lining — like a personal boundary — has been worn thin. The Pairing pattern: absorbing what others repel because your boundaries were never reinforced."},
+  {id:31,name:"High blood pressure",cat:"Cardiovascular",past:"S",synonyms:["high blood pressure","hypertension","HTN","elevated blood pressure","high BP","blood pressure","BP"],msg:"Sustained pressure in the vascular system. The Squeeze — the state of constant external demand — is measured directly in millimeters of mercury. The body keeps score precisely."},
+  {id:32,name:"Heart palpitations",cat:"Cardiovascular",past:"A",synonyms:["palpitations","heart racing","racing heart","heart flutter","heart flutters","irregular heartbeat","skipped beats"],msg:"The heart performing irregularly. Palpitations often accompany performance anxiety — the Audition pattern activating the body's alert system before an audience, real or imagined."},
+  {id:33,name:"Chest tightness",cat:"Cardiovascular",past:"S",synonyms:["chest tight","chest tightness","chest pressure","tightness in chest","chest constriction","chest pain"],msg:"The chest — the seat of vulnerability — constricting under pressure. This is the Squeeze embodied: the body protecting the heart by armoring what surrounds it."},
+  {id:34,name:"Arrhythmia",cat:"Cardiovascular",past:"T",synonyms:["arrhythmia","irregular heartbeat","AFib","atrial fibrillation","heart rhythm","abnormal heart rhythm"],msg:"A heart rhythm disrupted by what's been accumulated. The Tank overload interferes with the body's most fundamental rhythm."},
+  {id:35,name:"Poor circulation",cat:"Cardiovascular",past:"T",synonyms:["poor circulation","cold hands","cold feet","cold extremities","circulation problems"],msg:"Resources not reaching the periphery. When the Tank is depleted, the body prioritizes core survival — extremities, creativity, and future-orientation lose their supply first."},
+  {id:36,name:"Raynaud's phenomenon",cat:"Cardiovascular",past:"P",synonyms:["Raynaud","Raynaud's","Raynauds","fingers turning white","fingers turning blue","cold fingers"],msg:"The body withdrawing blood from its extremities in response to perceived threat. The Pairing pattern: hyperresponsive to environmental signals others barely register."},
+  {id:37,name:"Varicose veins",cat:"Cardiovascular",past:"T",synonyms:["varicose veins","spider veins","varicosities","vein problems"],msg:"Blood pooling — not returning efficiently. Carrying the accumulated weight of what hasn't circulated back. The Tank pattern: what goes out doesn't come back replenished."},
+  {id:38,name:"Frequent headaches",cat:"Cardiovascular",past:"S",synonyms:["headaches","headache","migraine","migraines","tension headache","chronic headache","head pain"],msg:"The head under pressure. Chronic headaches are among the body's clearest Squeeze signals — the system at capacity, blood vessels responding to sustained cortisol load."},
+  {id:39,name:"Chronic anxiety",cat:"Nervous System",past:"A",synonyms:["anxiety","anxious","anxiety disorder","generalized anxiety","GAD","worried all the time","constant worry","nervousness"],msg:"The nervous system in perpetual performance mode. Chronic anxiety is the Audition that never ends — the body preparing for an audience that may never arrive, or one that's always there."},
+  {id:40,name:"Panic attacks",cat:"Nervous System",past:"S",synonyms:["panic attack","panic attacks","panic disorder","sudden fear","sudden anxiety","can't breathe","heart attack feeling"],msg:"The Squeeze reaching a breaking point. A panic attack is the body's emergency broadcast — accumulated pressure finding a sudden, undeniable exit."},
+  {id:41,name:"Depression",cat:"Nervous System",past:"T",synonyms:["depression","depressed","MDD","major depression","feeling hopeless","no joy","anhedonia","low mood","persistent sadness"],msg:"The Tank emptied past the point of motivation. Depression often follows years of depletion — a system that simply no longer has the resources to generate forward momentum."},
+  {id:42,name:"Brain fog",cat:"Nervous System",past:"T",synonyms:["brain fog","can't think clearly","mental fog","cognitive fog","memory issues","can't concentrate","poor memory","forgetfulness"],msg:"Cognitive resources redirected to survival. When the Tank is depleted, the brain's higher functions — clarity, creativity, decision-making — lose their fuel first."},
+  {id:43,name:"Dizziness / vertigo",cat:"Nervous System",past:"S",synonyms:["dizziness","dizzy","vertigo","lightheaded","lightheadedness","spinning","off balance","balance problems"],msg:"The world off-balance. Vertigo and dizziness often accompany periods when the Squeeze has disoriented the body's sense of stable ground — literally and figuratively."},
+  {id:44,name:"Tinnitus (ringing in ears)",cat:"Nervous System",past:"S",synonyms:["tinnitus","ringing ears","ringing in ears","ear ringing","noise in ears","buzzing ears"],msg:"A signal that won't stop. Tinnitus can accompany sustained nervous system activation — the body creating its own noise when external pressure has been internalized for too long."},
+  {id:45,name:"Tremors / shaking",cat:"Nervous System",past:"A",synonyms:["tremors","shaking","trembling","uncontrollable shaking","essential tremor","hands shake"],msg:"The body vibrating with what it cannot express. Tremors often accompany sustained emotional suppression — the Audition pattern holding still while the nervous system oscillates."},
+  {id:46,name:"Numbness / tingling",cat:"Nervous System",past:"T",synonyms:["numbness","tingling","pins and needles","numb","nerve tingling","peripheral neuropathy","neuropathy"],msg:"Sensation shutting down. The Tank pattern extended: when the load exceeds capacity, the nervous system begins to go quiet — disconnecting from what it can no longer afford to feel."},
+  {id:47,name:"Hypervigilance",cat:"Nervous System",past:"P",synonyms:["hypervigilance","always alert","can't relax","on edge","startle easily","jumpy","easily startled","PTSD symptoms"],msg:"The nervous system trained to detect threat before it arrives. The Pairing: your system learned early that danger wears a familiar face, and it has not stopped scanning since."},
+  {id:48,name:"Dissociation",cat:"Nervous System",past:"T",synonyms:["dissociation","dissociating","depersonalization","derealization","out of body","feeling unreal","spaced out","zoning out"],msg:"Leaving the body to survive it. Dissociation is the nervous system's most complete protective strategy — the Tank so overloaded that consciousness retreats to protect the person inside."},
+  {id:49,name:"Thyroid dysfunction",cat:"Hormonal & Metabolic",past:"T",synonyms:["thyroid","thyroid problems","thyroid disorder","thyroid disease","thyroid issues","hypothyroid","hyperthyroid"],msg:"The thyroid governs pace and output. Dysfunction mirrors the body's attempt to regulate a system asked to produce more than is sustainable."},
+  {id:50,name:"Adrenal fatigue",cat:"Hormonal & Metabolic",past:"S",synonyms:["adrenal fatigue","adrenal exhaustion","adrenal burnout","HPA axis","cortisol depletion"],msg:"The adrenal glands — the Squeeze organs — depleted from sustained cortisol production. The body burned through its stress reserves and is now running on reserves of reserves."},
+  {id:51,name:"Cortisol dysregulation",cat:"Hormonal & Metabolic",past:"S",synonyms:["cortisol","high cortisol","low cortisol","cortisol imbalance","stress hormones","HPA dysfunction"],msg:"The stress hormone system miscalibrated. When the Squeeze is chronic, cortisol rhythms flatten — too high when rest is needed, too low when activation is required."},
+  {id:52,name:"Blood sugar instability",cat:"Hormonal & Metabolic",past:"A",synonyms:["blood sugar","blood glucose","sugar crashes","hypoglycemia","reactive hypoglycemia","glucose instability","sugar swings"],msg:"Energy that spikes and crashes mirrors the Audition cycle — performing intensely, then collapsing when the performance ends. The body learns to regulate around the emotional rhythm."},
+  {id:53,name:"Unexplained weight gain",cat:"Hormonal & Metabolic",past:"T",synonyms:["weight gain","gaining weight","unexplained weight gain","can't lose weight","putting on weight"],msg:"The body in conservation mode. Chronic stress signals scarcity — the body stores what it has because the Tank pattern has taught it that replenishment cannot be assumed."},
+  {id:54,name:"Difficulty losing weight",cat:"Hormonal & Metabolic",past:"S",synonyms:["can't lose weight","weight loss resistance","stubborn weight","plateau","no weight loss"],msg:"Cortisol-driven fat storage. Under sustained Squeeze, the body prioritizes survival over metabolism — holding reserves against a threat it believes is ongoing."},
+  {id:55,name:"Metabolic syndrome",cat:"Hormonal & Metabolic",past:"S",synonyms:["metabolic syndrome","insulin resistance","pre-diabetes","prediabetes","metabolic disorder"],msg:"Multiple systems under pressure simultaneously. Metabolic syndrome is the Squeeze made systemic — when no single system can compensate, the whole pattern becomes visible."},
+  {id:56,name:"Hormonal imbalances",cat:"Hormonal & Metabolic",past:"A",synonyms:["hormonal imbalance","hormone imbalance","hormones off","estrogen dominance","progesterone low","hormonal problems"],msg:"Hormones that shift based on what's being performed for others. The Audition pattern disrupts the body's natural hormonal rhythm as it adapts to sustained emotional output."},
+  {id:57,name:"PCOS (polycystic ovary syndrome)",cat:"Hormonal & Metabolic",past:"T",synonyms:["PCOS","polycystic ovary","polycystic ovaries","polycystic ovary syndrome","ovarian cysts"],msg:"Hormonal dysregulation connected to the body's response to sustained depletion. The Tank overloaded disrupts the delicate hormonal systems that require safety and sufficiency to regulate."},
+  {id:58,name:"Diabetes / insulin resistance",cat:"Hormonal & Metabolic",past:"S",synonyms:["diabetes","type 2 diabetes","insulin resistance","diabetic","high blood sugar","hyperglycemia"],msg:"The body unable to process what it's receiving efficiently. Insulin resistance mirrors the Squeeze — cells that have stopped responding normally to normal signals after too long under duress."},
+  {id:59,name:"Chronic back pain",cat:"Musculoskeletal",past:"T",synonyms:["back pain","lower back pain","back ache","backache","lumbar pain","spinal pain","chronic back"],msg:"The back carries what we refuse to put down. Chronic lower back pain is the Tank made physical — the body bearing the weight of everything accumulated and never released."},
+  {id:60,name:"Neck and shoulder tension",cat:"Musculoskeletal",past:"A",synonyms:["neck pain","shoulder pain","neck tension","tight shoulders","shoulder tension","tight neck","stiff neck","neck stiffness"],msg:"The muscles of performance — holding the head high, shoulders back. Chronic tension here accompanies the Audition: the constant preparation of the body to be seen and evaluated."},
+  {id:61,name:"Jaw clenching / TMJ",cat:"Musculoskeletal",past:"S",synonyms:["TMJ","jaw clenching","jaw pain","teeth grinding","bruxism","grinding teeth","temporomandibular","clenching jaw"],msg:"The jaw holds what cannot be said. Clenching is the Squeeze localized — pressure accumulated in the face, in the words that were swallowed, in the responses that were suppressed."},
+  {id:62,name:"Joint pain",cat:"Musculoskeletal",past:"T",synonyms:["joint pain","achy joints","painful joints","joint ache","arthralgia","stiff joints"],msg:"The joints — the places of connection and movement — in pain. The Tank pattern: the load you've been carrying has begun to wear on the structures meant to keep you flexible and forward-moving."},
+  {id:63,name:"Muscle tension / tightness",cat:"Musculoskeletal",past:"S",synonyms:["muscle tension","tight muscles","muscle tightness","muscle stiffness","tense muscles","stiff muscles"],msg:"The body braced. Chronic muscle tension is the Squeeze embodied — the system prepared for impact, held in readiness for a blow that never fully lands or never stops coming."},
+  {id:64,name:"Chronic pain syndrome",cat:"Musculoskeletal",past:"T",synonyms:["chronic pain","pain all over","widespread chronic pain","pain syndrome","body pain"],msg:"Pain that has become the baseline. The Tank depleted past the point of acute signaling — the body has normalized the emergency."},
+  {id:65,name:"Sciatica",cat:"Musculoskeletal",past:"T",synonyms:["sciatica","sciatic pain","sciatic nerve","sciatic nerve pain","leg nerve pain","shooting leg pain"],msg:"The longest nerve in the body under pressure. Sciatica carries the Tank pattern — the weight of long-held burdens pressing on the pathways meant to move you forward."},
+  {id:66,name:"Osteoporosis",cat:"Musculoskeletal",past:"T",synonyms:["osteoporosis","bone loss","low bone density","bone thinning","osteopenia"],msg:"Bones losing density. Structure not being replenished. The Tank: when resources are diverted to managing the chronic load, rebuilding core structure is deferred indefinitely."},
+  {id:67,name:"Carpal tunnel syndrome",cat:"Musculoskeletal",past:"A",synonyms:["carpal tunnel","wrist pain","hand numbness","CTS","wrist tingling","hand pain"],msg:"The hands — the instruments of doing and giving — in pain. Carpal tunnel often accompanies the Audition: performing service, output, and care for others until the doing itself becomes unsustainable."},
+  {id:68,name:"Plantar fasciitis",cat:"Musculoskeletal",past:"T",synonyms:["plantar fasciitis","heel pain","foot pain","bottom of foot pain","arch pain"],msg:"The foundation of your movement in pain. The Tank: what you're standing on — your sense of support, ground, and capacity to keep going — has been bearing more than it was built to hold."},
+  {id:69,name:"Hair loss / alopecia",cat:"Skin & Hair",past:"S",synonyms:["hair loss","alopecia","losing hair","thinning hair","bald patches","baldness","hair thinning","hair falling out"],msg:"The body shedding under pressure. Hair loss during sustained stress is one of the body's most visible Squeeze responses — resources redirected, non-essential systems downregulated."},
+  {id:70,name:"Hives / urticaria",cat:"Skin & Hair",past:"P",synonyms:["hives","urticaria","welts","skin welts","itchy bumps","allergic hives"],msg:"The skin reacting to something in the environment. The Pairing pattern: your system flags as threat what others absorb without response. Something familiar is triggering an outsized alarm."},
+  {id:71,name:"Rosacea",cat:"Skin & Hair",past:"A",synonyms:["rosacea","facial redness","red face","flushing","blushing","facial flushing"],msg:"The face flushing — the visible surface of the Audition. Rosacea often accompanies performance-based anxiety: the skin broadcasting the internal state that the performance is designed to conceal."},
+  {id:72,name:"Acne / skin breakouts",cat:"Skin & Hair",past:"S",synonyms:["acne","breakouts","pimples","skin breakouts","stress acne","cystic acne","blemishes"],msg:"The skin attempting to release what the body is carrying. Stress-driven acne is the Squeeze finding expression at the surface — pressure seeking an outlet."},
+  {id:73,name:"Premature aging",cat:"Skin & Hair",past:"T",synonyms:["premature aging","aging fast","looking older","wrinkles","fine lines","skin aging","early aging"],msg:"The body aging faster than its years. The Tank depleted chronically accelerates cellular aging — the biological cost of carrying too much for too long is written on the face and skin."},
+  {id:74,name:"Excessive sweating",cat:"Skin & Hair",past:"A",synonyms:["excessive sweating","hyperhidrosis","sweating too much","night sweats","sweating anxiety"],msg:"The body releasing heat from performance. Hyperhidrosis often accompanies the Audition pattern — the physical response to sustained social evaluation, real or anticipated."},
+  {id:75,name:"Brittle nails",cat:"Skin & Hair",past:"T",synonyms:["brittle nails","nails breaking","weak nails","peeling nails","nail breakage"],msg:"Structure failing at the edges. Brittle nails reflect nutritional and stress depletion — the Tank: what is needed for maintenance and repair is being diverted elsewhere."},
+  {id:76,name:"Skin picking / scratching",cat:"Skin & Hair",past:"A",synonyms:["skin picking","scratching","dermatillomania","excoriation","picking skin","compulsive picking"],msg:"The hands working on the surface of the self. Skin picking connects to the Audition — a form of self-editing, finding and eliminating perceived imperfection."},
+  {id:77,name:"Burnout",cat:"Mental & Emotional",past:"T",synonyms:["burnout","burned out","burnt out","exhausted","depleted","empty","running on empty","nothing left"],msg:"The Tank empty. Burnout is not a character flaw — it is the predictable outcome of the Tank pattern run to its conclusion: pouring out indefinitely without a source of replenishment."},
+  {id:78,name:"Emotional numbness",cat:"Mental & Emotional",past:"T",synonyms:["emotional numbness","numb","can't feel","feeling nothing","flat affect","disconnected emotionally"],msg:"The system shutting down to survive. Emotional numbness is what happens when the Tank has been empty long enough that feeling itself becomes a resource the body conserves."},
+  {id:79,name:"Rage / anger outbursts",cat:"Mental & Emotional",past:"S",synonyms:["rage","anger","anger outbursts","explosive anger","anger issues","short fuse","temper","lose temper"],msg:"The Squeeze reaching its limit. Rage is not the problem — it is the Squeeze breaking its own container. The pattern was always there. The outburst is just when it became visible."},
+  {id:80,name:"Persistent sadness",cat:"Mental & Emotional",past:"T",synonyms:["sadness","always sad","crying","grief","persistent sadness","can't stop crying","sadness that won't lift"],msg:"Grief that doesn't move. Persistent sadness accompanies the Tank when what was lost — identity, worth, relationships, self — was never fully acknowledged or mourned."},
+  {id:81,name:"Shame spirals",cat:"Mental & Emotional",past:"A",synonyms:["shame","shame spiral","deep shame","feeling worthless","self loathing","I'm the problem"],msg:"The Audition internalized. Shame spirals are what happens when the performance fails — the system built on performing for love concludes the self is the problem, not the pattern."},
+  {id:82,name:"Perfectionism",cat:"Mental & Emotional",past:"A",synonyms:["perfectionism","perfectionist","never good enough","high standards","fear of mistakes","fear of failure"],msg:"The Audition in its most refined form. Perfectionism is performance-based worth operating at full capacity — the belief that flawless execution is what makes you safe to love."},
+  {id:83,name:"People-pleasing",cat:"Mental & Emotional",past:"A",synonyms:["people pleasing","people pleaser","can't say no","always helping","doormat","overly agreeable","yes person"],msg:"Performing for approval as a survival strategy. People-pleasing is the Audition codified — the system learned so early and so deeply that it now feels like personality rather than pattern."},
+  {id:84,name:"Difficulty saying no",cat:"Mental & Emotional",past:"A",synonyms:["can't say no","difficulty saying no","trouble saying no","saying no","setting limits","overcommitting","overcommitment"],msg:"The Audition with no exit. Inability to decline is the performance pattern protecting itself — 'no' feels like the end of approval, and approval still feels like the end of safety."},
+  {id:85,name:"Fear of abandonment",cat:"Mental & Emotional",past:"P",synonyms:["fear of abandonment","abandonment issues","fear of rejection","fear being left","left behind","fear of being alone"],msg:"The Pairing pattern at its deepest: a wound that knows what abandonment feels like and has built its entire relational strategy around never experiencing it again."},
+  {id:86,name:"Codependency",cat:"Mental & Emotional",past:"P",synonyms:["codependency","codependent","codependence","enmeshment","unhealthy attachment","losing self in relationships"],msg:"Wounds recognizing wounds. The Pairing: being drawn to those whose patterns mirror your own early experiences, recreating the familiar territory of your original wound."},
+  {id:87,name:"Intrusive thoughts",cat:"Mental & Emotional",past:"S",synonyms:["intrusive thoughts","unwanted thoughts","can't stop thinking","obsessive thoughts","racing thoughts","thought loops","rumination"],msg:"The mind unable to release what the Squeeze is holding. Intrusive thoughts are the nervous system's attempt to process what has not been given a safe container for resolution."},
+  {id:88,name:"Imposter syndrome",cat:"Mental & Emotional",past:"A",synonyms:["imposter syndrome","impostor syndrome","fraud feeling","feel like a fraud","not good enough","don't deserve success"],msg:"The Audition doubting its own performance. Imposter syndrome is what happens when achievement is the metric for worth — no accomplishment ever feels like enough because the measuring never stops."},
+  {id:89,name:"Insomnia",cat:"Sleep & Energy",past:"S",synonyms:["insomnia","can't sleep","trouble sleeping","sleep problems","sleep issues","not sleeping","sleeplessness"],msg:"The body unable to release the Squeeze at night. Insomnia is the system that cannot downregulate — cortisol still elevated, the threat still present, the performance still running."},
+  {id:90,name:"Waking at 3am",cat:"Sleep & Energy",past:"S",synonyms:["waking at 3am","waking up at night","waking 3am","waking up 2am","waking at 4am","middle of night waking","early morning waking"],msg:"The cortisol spike between 2-4am that interrupts sleep is a Squeeze signature. The body activating stress hormones in the hours before dawn — a pattern, not an accident."},
+  {id:91,name:"Sleeping too much",cat:"Sleep & Energy",past:"T",synonyms:["sleeping too much","oversleeping","hypersomnia","can't get out of bed","sleep all day","too much sleep"],msg:"The Tank seeking to refill through the only mechanism available — shutdown. When depletion is deep enough, the body takes what restoration it can in the only window it controls."},
+  {id:92,name:"Unrefreshing sleep",cat:"Sleep & Energy",past:"T",synonyms:["unrefreshing sleep","waking up tired","sleep doesn't help","not rested","tired after sleeping","don't feel refreshed"],msg:"Sleeping without recovering. The Tank pattern: sleep that cannot restore because the ongoing depletion — emotional, physiological, relational — continues even during rest."},
+  {id:93,name:"Afternoon energy crashes",cat:"Sleep & Energy",past:"A",synonyms:["afternoon crash","2pm crash","energy crash","afternoon slump","afternoon fatigue","3pm slump","midday crash"],msg:"The performance cycle collapsing mid-afternoon. Cortisol that peaked for the morning's demands drops sharply — the Audition has a biological cost that arrives at 2pm."},
+  {id:94,name:"Constant tiredness",cat:"Sleep & Energy",past:"T",synonyms:["always tired","constant fatigue","exhaustion","fatigue","chronic tiredness","never have energy","no energy","tired all the time"],msg:"The baseline set at depletion. When the Tank has been empty long enough, exhaustion becomes the normal against which all other states are measured."},
+  {id:95,name:"Difficulty waking up",cat:"Sleep & Energy",past:"T",synonyms:["hard to wake up","difficulty waking","can't wake up","hard to get out of bed","morning fatigue","groggy morning"],msg:"The body resistant to returning to the performance. Difficulty waking is the Tank's final resistance — the moment before the pattern resumes, the body holds on to the only rest it gets."},
+  {id:96,name:"Low motivation / apathy",cat:"Sleep & Energy",past:"T",synonyms:["low motivation","no motivation","apathy","don't care","can't motivate myself","nothing matters","loss of motivation","unmotivated"],msg:"The dopamine system depleted by chronic stress and depleted worth. Apathy is not laziness — it is the Tank empty past the point of generating desire for what comes next."},
+  {id:97,name:"Irregular menstrual cycles",cat:"Reproductive",past:"S",synonyms:["irregular periods","missed periods","irregular cycle","period problems","menstrual irregularity","skipped period","late period"],msg:"The body downregulating reproductive function under threat. The Squeeze signals that this is not a safe environment for vulnerability — cycles become the visible marker of that assessment."},
+  {id:98,name:"Fertility challenges",cat:"Reproductive",past:"T",synonyms:["infertility","fertility issues","trouble getting pregnant","can't conceive","fertility problems","IVF","not getting pregnant"],msg:"The body holding its most resource-intensive function in reserve when the Tank is depleted. Fertility requires surplus — physiological, emotional, psychological — that chronic depletion prevents."},
+  {id:99,name:"PMS / PMDD",cat:"Reproductive",past:"A",synonyms:["PMS","PMDD","premenstrual","premenstrual syndrome","premenstrual dysphoric disorder","mood before period","emotional before period"],msg:"The premenstrual window when the performance becomes hardest to maintain. PMDD amplifies what is suppressed throughout the cycle — the Audition's mask slips in the luteal phase."},
+  {id:100,name:"Sexual dysfunction",cat:"Reproductive",past:"T",synonyms:["sexual dysfunction","low libido","no sex drive","low sex drive","can't be intimate","intimacy issues","no desire"],msg:"Intimacy requires presence — and presence requires a self that is available. When the Tank is empty and the body is in survival mode, vulnerability and desire are the first capacities offline."}
+];
+
+const PI = {
+  P:{name:"The Pairing",sub:"Wounds recognize wounds",color:"#00c8b4",
+     full:"You are drawn to what is familiar — even when familiar means painful. Your nervous system learned to recognize certain emotional signatures, and it seeks them out even when they cost you. This is not weakness. It is a pattern that was once protective. The Pairing means you sense wounds in others before they announce them — because yours taught you to read exactly that signal. The gift inside this pattern is extraordinary empathy. The cost is relationships that recreate the original wound rather than heal it."},
+  A:{name:"The Audition",sub:"Performing for love instead of receiving it",color:"#c9a84c",
+     full:"You learned early that love was conditional on performance. So you perform. Flawlessly. Exhaustingly. The audience in your head never leaves, and the performance never quite earns what you were promised. This is not a character flaw. It is a survival strategy that has outlived its context. The Audition shows up as perfectionism, people-pleasing, imposter syndrome, and the persistent sense that you are one mistake away from losing something essential — someone's approval, your position, your safety."},
+  S:{name:"The Squeeze",sub:"Pressure reveals truth",color:"#e07060",
+     full:"You live under pressure — internal, external, or both. Your nervous system has been in a state of chronic activation for so long that it may feel like your personality. It is not. It is your body's response to an environment that required constant vigilance. The Squeeze shows up in every system that processes threat: your gut, your cardiovascular system, your immune system, your sleep. The body cannot maintain emergency status indefinitely — and the symptoms you selected are the evidence of a system that has been asked to do exactly that."},
+  T:{name:"The Tank",sub:"What you carry is what you pour",color:"#8b7ec8",
+     full:"You give. Generously, consistently, and often past the point of your own capacity. The Tank is your internal resource — the emotional, psychological, and physiological reserve from which all giving, functioning, and healing draw. When the Tank is chronically depleted, the body begins to ration. Healing slows. Immunity weakens. Energy disappears. Desire goes offline. The symptoms you're experiencing are not random breakdowns — they are the sequential shutdown of systems operating without adequate supply. You cannot pour from empty. And the body will enforce that truth whether you acknowledge it or not."}
+};
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+let sel = new Set();
+let activeCat = 'All';
+let uName = '', uEmail = '';
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+function init(){ renderGrid(C); }
+
+// ═══════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════
+function renderGrid(items){
+  const g = document.getElementById('grid');
+  const nr = document.getElementById('noRes');
+  if(!items.length){ g.innerHTML=''; nr.style.display='block'; return; }
+  nr.style.display='none';
+  g.innerHTML = items.map(c=>`
+    <div class="card ${sel.has(c.id)?'sel':''}" onclick="toggle(${c.id})" id="cd${c.id}">
+      <div><div class="card-name">${c.name}</div><div class="card-cat">${c.cat}</div></div>
+      <div class="card-chk" id="ck${c.id}">${sel.has(c.id)?'✓':''}</div>
+    </div>`).join('');
+}
+
+function toggle(id){
+  sel.has(id) ? sel.delete(id) : sel.add(id);
+  const card = document.getElementById('cd'+id);
+  const chk  = document.getElementById('ck'+id);
+  if(sel.has(id)){ card.classList.add('sel'); chk.textContent='✓'; }
+  else           { card.classList.remove('sel'); chk.textContent=''; }
+  document.getElementById('selNum').textContent = sel.size;
+  document.getElementById('nextBtn').disabled = sel.size===0;
+}
+
+// ═══════════════════════════════════════════════
+// FILTER — checks name + category + synonyms
+// ═══════════════════════════════════════════════
+function filterAll(){
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const filtered = C.filter(c=>{
+    const matchCat = activeCat==='All' || c.cat===activeCat;
+    if(!q) return matchCat;
+    const inName = c.name.toLowerCase().includes(q);
+    const inSyn  = c.synonyms.some(s=>s.toLowerCase().includes(q));
+    const inCat  = c.cat.toLowerCase().includes(q);
+    return matchCat && (inName||inSyn||inCat);
+  });
+  renderGrid(filtered);
+}
+
+function setCat(cat, btn){
+  activeCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  filterAll();
+}
+
+// ═══════════════════════════════════════════════
+// PHASE NAV
+// ═══════════════════════════════════════════════
+function toEmail(){
+  if(!sel.size) return;
+  document.getElementById('emailCount').textContent = sel.size;
+  const tags = document.getElementById('selTagsDisplay');
+  const items = C.filter(c=>sel.has(c.id));
+  tags.innerHTML = items.slice(0,8).map(c=>`<span class="sel-tag">${c.name}</span>`).join('')
+    + (items.length>8?`<span class="sel-tag">+${items.length-8} more</span>`:'');
+  show('p2');
+  document.getElementById('prog').style.width='60%';
+  window.scrollTo(0,0);
+}
+
+function toResults(skip){
+  uName  = skip ? '' : document.getElementById('fname').value.trim();
+  uEmail = skip ? '' : document.getElementById('femail').value.trim();
+  buildResults();
+  show('p3');
+  document.getElementById('prog').style.width='100%';
+  window.scrollTo(0,0);
+  if(!skip && uEmail) sendToSquare();
+}
+
+function show(id){
+  document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function reset(){
+  sel.clear(); uName=''; uEmail=''; activeCat='All';
+  document.querySelectorAll('.cat-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+  document.getElementById('searchInput').value='';
+  document.getElementById('selNum').textContent='0';
+  document.getElementById('nextBtn').disabled=true;
+  renderGrid(C);
+  show('p1');
+  document.getElementById('prog').style.width='25%';
+  window.scrollTo(0,0);
+}
+
+// ═══════════════════════════════════════════════
+// SQUARE — calls Vercel serverless function
+// ═══════════════════════════════════════════════
+async function sendToSquare(){
+  try{
+    const items = C.filter(c=>sel.has(c.id));
+    const counts = {P:0,A:0,S:0,T:0};
+    items.forEach(c=>counts[c.past]++);
+    const dominant = Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
+    await fetch('/api/create-customer',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        firstName: uName,
+        email: uEmail,
+        dominantPattern: dominant,
+        patternName: PI[dominant].name,
+        conditions: items.map(c=>c.name),
+        counts
+      })
+    });
+    showToast('✓ Your results have been saved');
+  } catch(e){ console.error('Square sync error',e); }
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+// ═══════════════════════════════════════════════
+// BUILD RESULTS
+// ═══════════════════════════════════════════════
+function buildResults(){
+  const items = C.filter(c=>sel.has(c.id));
+  const counts = {P:0,A:0,S:0,T:0};
+  const byPAST = {P:[],A:[],S:[],T:[]};
+  items.forEach(c=>{ counts[c.past]++; byPAST[c.past].push(c); });
+  const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  const dominant = sorted[0][0];
+  const activePatterns = sorted.filter(([,v])=>v>0).map(([k])=>k);
+
+  // Greeting
+  if(uName){
+    document.getElementById('rGreeting').textContent = `${uName}, here is your pattern analysis`;
+  }
+
+  // Primary pattern
+  const pp = PI[dominant];
+  document.getElementById('primaryBox').innerHTML=`
+    <div class="primary-lbl">Your Dominant Pattern</div>
+    <div class="primary-name" style="color:${pp.color}">${pp.name}</div>
+    <div class="primary-sub">${pp.sub}</div>
+    <div class="primary-desc">${pp.full}</div>`;
+
+  // PAST cards — always show all 4, dim inactive ones
+  document.getElementById('pastGrid').innerHTML =
+    ['P','A','S','T'].map(k=>{
+      const info=PI[k]; const conds=byPAST[k]; const active=counts[k]>0;
+      if(active){
+        return `<div class="past-card ${k}">
+          <div class="past-head">
+            <div><div class="past-letter">${k}</div><div class="past-title">${info.name}</div><div class="past-sub2">${info.sub}</div></div>
+            <div class="past-count">${counts[k]}</div>
+          </div>
+          <div class="past-conds" style="margin-bottom:0.5rem;">${conds.map(c=>c.name).join(' · ')}</div>
+          <div class="past-insight">${info.full.substring(0,130)}…</div>
+        </div>`;
+      } else {
+        return `<div class="past-card ${k}" style="opacity:0.38;filter:grayscale(0.4);">
+          <div class="past-head">
+            <div><div class="past-letter">${k}</div><div class="past-title">${info.name}</div><div class="past-sub2">${info.sub}</div></div>
+            <div style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-left:auto;align-self:flex-start;padding-top:0.2rem;">Not present</div>
+          </div>
+          <div class="past-insight" style="margin-top:0;border-top:none;font-style:normal;font-size:0.72rem;">${info.sub} — none of your selected symptoms mapped to this pattern. This does not mean it is absent from your life, only that it did not surface in this assessment.</div>
+        </div>`;
+      }
+    }).join('');
+
+  // Holistic summary
+  buildHolistic(items, counts, activePatterns, dominant);
+
+  // Condition list
+  document.getElementById('condList').innerHTML =
+    items.map(c=>`
+      <div class="result-item ${c.past}">
+        <div class="r-bar"></div>
+        <div style="flex:1"><div class="r-name">${c.name}</div><div class="r-msg">${c.msg}</div></div>
+        <div class="r-tag">${PI[c.past].name}</div>
+      </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+// HOLISTIC SUMMARY GENERATOR
+// ═══════════════════════════════════════════════
+function buildHolistic(items, counts, activePatterns, dominant){
+  const total = items.length;
+  const systems = [...new Set(items.map(c=>c.cat))];
+  const multiSystem = systems.length >= 3;
+  const dominantInfo = PI[dominant];
+  const secondaryPatterns = activePatterns.filter(k=>k!==dominant);
+  const name = uName ? uName : 'you';
+
+  // Build pattern tag row
+  const tagRow = activePatterns.map(k=>
+    `<span class="ptag ${k}">${PI[k].name} (${counts[k]})</span>`).join('');
+
+  // Generate the narrative based on combination
+  let headline = '';
+  let p1 = '', p2 = '', p3 = '', p4 = '';
+
+  // Headline based on dominant + total count
+  if(total >= 15){
+    headline = `Your body has been carrying this <em>for a long time.</em>`;
+  } else if(total >= 8){
+    headline = `This is a <em>pattern,</em> not a coincidence.`;
+  } else {
+    headline = `Your body is <em>speaking clearly.</em>`;
+  }
+
+  // P1: What the symptom cluster reveals about their history
+  if(dominant==='T' && counts.T >= 3){
+    p1 = `<strong>What this cluster suggests about what you've been through:</strong> The number and spread of your symptoms points to someone who has been in a sustained giving role — caretaking, managing, holding things together — for longer than the body's reserves were designed to support. This is not a diagnosis. It is a pattern. People whose Tank runs chronically low often don't notice the depletion in real time because they're too busy managing everyone else's needs to register their own. The body notices. It has been registering it precisely — in the systems you've selected above.`;
+  } else if(dominant==='A' && counts.A >= 3){
+    p1 = `<strong>What this cluster suggests about what you've been through:</strong> The pattern visible in your selections points to someone who learned early that their worth was tied to their performance. High-functioning. High-achieving. Often the person others describe as "always having it together." The symptoms that cluster around the Audition pattern are the body's evidence of the cost of that performance — held in the neck, the skin, the hormones, the sleep cycle. The audience you've been performing for has taken a physical toll.`;
+  } else if(dominant==='S' && counts.S >= 3){
+    p1 = `<strong>What this cluster suggests about what you've been through:</strong> Your symptom pattern points to a nervous system that has spent a significant period of time under sustained pressure — either from an environment that demanded constant vigilance, a relationship that never felt fully safe, or an internal standard that never allowed full rest. The Squeeze doesn't announce itself. It becomes the baseline. And the body in the selections above has been tracking the cost of that baseline, system by system.`;
+  } else if(dominant==='P' && counts.P >= 2){
+    p1 = `<strong>What this cluster suggests about what you've been through:</strong> Your pattern points to someone whose nervous system was shaped early by experiences that required reading others — their moods, their intentions, their potential for harm or love — with precision. The Pairing pattern develops in environments where attunement was a survival skill. The body carries the legacy of that training in heightened reactivity, boundary permeability, and a tendency to absorb others' emotional states as if they were your own.`;
+  } else {
+    p1 = `<strong>What this cluster suggests about what you've been through:</strong> Your selections span multiple PAST Framework patterns, which suggests a history that has required adaptation across more than one dimension — managing external pressure while also performing for acceptance, or carrying others' needs while your own immune system trained itself to detect invisible threats. The body does not lie about complexity. Yours has been navigating it.`;
+  }
+
+  // P2: Multi-system meaning
+  if(multiSystem){
+    p2 = `<strong>Why your symptoms cross multiple systems:</strong> When the body's response to unprocessed experience is contained in one system, it's often managed, medicated, or explained away. When it appears across ${systems.length} separate systems simultaneously — as yours does across ${systems.slice(0,3).join(', ')}${systems.length>3?' and others':''} — it stops being coincidental. The mind-body connection is not metaphorical. The immune system, the gut, the nervous system, the skin, and the hormonal system are all downstream of the same signal: <em>what the mind refuses to process, the body takes on as its own assignment.</em>`;
+  } else {
+    p2 = `<strong>Why these particular systems:</strong> The body does not choose its symptoms randomly. The systems showing up in your selections have a specific vulnerability — they are the first to respond when the nervous system is under load and emotional processing has been deferred. These are not weak systems. They are highly intelligent ones that registered what you were carrying before your conscious mind gave it language.`;
+  }
+
+  // P3: What the combination of patterns means
+  if(secondaryPatterns.length >= 2){
+    const secNames = secondaryPatterns.map(k=>PI[k].name).join(' and ');
+    p3 = `<strong>What it means that multiple patterns are present:</strong> Your dominant pattern is ${dominantInfo.name}, but the presence of ${secNames} alongside it tells a more layered story. These patterns rarely appear alone in people who are deeply self-aware — because the kind of person who develops one pattern in depth has usually been living in circumstances complex enough to activate more than one protective strategy. The patterns reinforce each other: performance-based worth increases the load on the Tank; a depleted Tank increases the Squeeze; heightened vigilance from the Pairing keeps the performance permanent. This is not a flaw in you. It is the predictable architecture of a highly adaptive nervous system.`;
+  } else if(secondaryPatterns.length===1){
+    p3 = `<strong>What the secondary pattern adds:</strong> While ${dominantInfo.name} is your primary pattern, the presence of ${PI[secondaryPatterns[0]].name} alongside it adds texture. The combination means the underlying driver is ${dominantInfo.name}, but the experience of it is often filtered through ${PI[secondaryPatterns[0]].sub.toLowerCase()}. These two patterns in combination produce a particular kind of exhaustion — not just physical, but existential. The kind that comes from performing, giving, or guarding for so long that you've lost the thread back to what you actually feel when no one is watching.`;
+  } else {
+    p3 = '';
+  }
+
+  // P4: The forward-facing close
+  p4 = `<strong>What this means going forward:</strong> The body communicates what the mind refuses to process. This is not a broken body. This is a body that has been doing exactly what it was designed to do — absorbing, adapting, signaling, and surviving. The question is not <em>what is wrong with you.</em> The question is: <em>what has been running that you haven't yet named?</em> That's where the work begins. Not in symptom management. In pattern recognition. In identity — which is the only level at which these patterns can be permanently addressed rather than temporarily managed.`;
+
+  document.getElementById('holisticBox').innerHTML = `
+    <div class="holistic-lbl">Holistic Pattern Summary</div>
+    <h3>${headline}</h3>
+    <div class="pattern-tags">${tagRow}</div>
+    <div class="holistic-body">
+      <p>${p1}</p>
+      <p>${p2}</p>
+      ${p3?`<p>${p3}</p>`:''}
+      <p>${p4}</p>
+    </div>`;
+}
+
+init();
+</script>
+</body>
+</html>

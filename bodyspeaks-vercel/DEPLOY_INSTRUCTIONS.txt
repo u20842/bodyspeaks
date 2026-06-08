@@ -1,0 +1,76 @@
+# Body Speaks — Vercel Deployment Instructions
+
+## Folder structure you're deploying:
+bodyspeaks-vercel/
+├── api/
+│   └── create-customer.js   ← serverless function (Square token lives here)
+├── public/
+│   └── index.html           ← the tool
+└── vercel.json              ← routing config
+
+---
+
+## STEP 1 — Deploy to Vercel
+
+1. Go to vercel.com → Sign up or log in (free)
+2. Click "Add New Project"
+3. Choose "Upload" (drag and drop the entire `bodyspeaks-vercel` FOLDER)
+   - Or connect your GitHub if you have the folder there
+4. Click Deploy — it will give you a `.vercel.app` URL
+
+---
+
+## STEP 2 — Add Environment Variables (CRITICAL — do this before testing)
+
+In Vercel → your project → Settings → Environment Variables, add:
+
+| Name                  | Value                                          |
+|-----------------------|------------------------------------------------|
+| SQUARE_ACCESS_TOKEN   | [Your Production Access Token from Square]     |
+| SQUARE_LOCATION_ID    | LZ99A2XXZJ2F1                                  |
+
+⚠️ IMPORTANT: After adding your env variables, go to Deployments → click the three dots on your latest deployment → "Redeploy" so the variables take effect.
+
+---
+
+## STEP 3 — Add Custom Domain
+
+In Vercel → your project → Settings → Domains:
+Add: bodyspeaks.icu-1111.com
+
+Vercel will show you the exact CNAME value to use.
+
+---
+
+## STEP 4 — Add CNAME in your DNS
+
+Log into wherever icu-1111.com DNS is managed:
+- Type: CNAME
+- Name: bodyspeaks
+- Value: [whatever Vercel gives you — usually cname.vercel-dns.com]
+
+DNS propagation takes 5–60 minutes.
+
+---
+
+## STEP 5 — Regenerate your Square token
+
+Since your token was visible in Claude chat, regenerate it:
+1. developer.squareup.com → Credentials → Production
+2. Click "Regenerate" next to Production Access Token
+3. Copy the NEW token
+4. Update the SQUARE_ACCESS_TOKEN env variable in Vercel
+5. Redeploy
+
+---
+
+## What happens when someone completes the tool:
+- They enter name + email on the capture screen
+- They click "Reveal My Pattern Analysis"
+- Their info is sent to /api/create-customer (server-side, token never exposed)
+- A new customer is created in your Square account
+- They are added to the "ICU-1111" customer group
+- Their dominant PAST pattern + all selected conditions are saved in the customer note
+- A green toast notification confirms "✓ Your results have been saved"
+
+If they skip the email step, they still see results — Square just doesn't receive anything.
