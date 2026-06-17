@@ -530,7 +530,7 @@ function toResults(skip){
   show('p3');
   document.getElementById('prog').style.width='100%';
   window.scrollTo(0,0);
-  if(!skip && uEmail) sendToSquare();
+  if(!skip && uEmail) sendResultsData();
 }
 
 function show(id){
@@ -551,28 +551,97 @@ function reset(){
 }
 
 // ═══════════════════════════════════════════════
-// SQUARE — calls Vercel serverless function
+// RESULT DELIVERY — sends quiz data to Make.com + Square
 // ═══════════════════════════════════════════════
-async function sendToSquare(){
+const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/85yuawiijdynnd2zw6st9aif41c5jxds';
+
+function buildResultPayload(){
+  const items = C.filter(c=>sel.has(c.id));
+  const counts = {P:0,A:0,S:0,T:0};
+  const byPAST = {P:[],A:[],S:[],T:[]};
+  items.forEach(c=>{ counts[c.past]++; byPAST[c.past].push(c); });
+
+  const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  const dominant = sorted[0][0];
+  const activePatternKeys = sorted.filter(([,v])=>v>0).map(([k])=>k);
+  const activePatternNames = activePatternKeys.map(k=>PI[k].name).join(', ');
+
+  const holisticBox = document.getElementById('holisticBox');
+  const holisticHeadline = holisticBox?.querySelector('h3')?.textContent?.trim() || '';
+  const holisticParagraphs = [...(holisticBox?.querySelectorAll('.holistic-body p') || [])].map(p=>p.textContent.trim());
+
+  return {
+    // Make.com / Google Docs fields
+    firstName: uName,
+    lastName: '',
+    email: uEmail,
+    dominantPattern: dominant,
+    dominantPatternName: PI[dominant].name,
+    dominantPatternFullDescription: PI[dominant].full,
+    countP: counts.P,
+    countA: counts.A,
+    countS: counts.S,
+    countT: counts.T,
+    totalCount: items.length,
+    activePatterns: activePatternNames,
+    conditions: items.map(c=>c.name),
+    conditionList: items.map(c=>c.name).join(', '),
+    holisticHeadline,
+    holisticP1: holisticParagraphs[0] || '',
+    holisticP2: holisticParagraphs[1] || '',
+    holisticP3: holisticParagraphs[2] || '',
+    holisticP4: holisticParagraphs[3] || '',
+    dealStepD: '',
+    dealStepE: '',
+    dealStepA: '',
+    dealStepL: '',
+    personalNoteFromAnju: '',
+    tier: 'free',
+    source: 'ICU-1111',
+    dateCompleted: new Date().toISOString().slice(0,10),
+
+    // Compatibility fields for existing Square/Vercel function
+    patternName: PI[dominant].name,
+    counts
+  };
+}
+
+async function sendResultsData(){
+  const payload = buildResultPayload();
+
   try{
-    const items = C.filter(c=>sel.has(c.id));
-    const counts = {P:0,A:0,S:0,T:0};
-    items.forEach(c=>counts[c.past]++);
-    const dominant = Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
-    await fetch('/api/create-customer',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        firstName: uName,
-        email: uEmail,
-        dominantPattern: dominant,
-        patternName: PI[dominant].name,
-        conditions: items.map(c=>c.name),
-        counts
+    const results = await Promise.allSettled([
+      fetch(MAKE_WEBHOOK_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      }),
+      fetch('/api/create-customer',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
       })
-    });
-    showToast('✓ Your results have been saved');
-  } catch(e){ console.error('Square sync error',e); }
+    ]);
+
+    const makeOK = results[0].status === 'fulfilled' && results[0].value.ok;
+    const squareOK = results[1].status === 'fulfilled' && results[1].value.ok;
+
+    if(makeOK && squareOK){
+      showToast('✓ Your results have been saved and emailed');
+    } else if(makeOK){
+      showToast('✓ Your results have been sent');
+      console.warn('Square sync did not complete', results[1]);
+    } else if(squareOK){
+      showToast('✓ Your results have been saved');
+      console.warn('Make webhook did not complete', results[0]);
+    } else {
+      showToast('Results displayed. Email delivery may need review.');
+      console.warn('Result delivery failed', results);
+    }
+  } catch(e){
+    console.error('Result delivery error', e);
+    showToast('Results displayed. Email delivery may need review.');
+  }
 }
 
 function showToast(msg){
