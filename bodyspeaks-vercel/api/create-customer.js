@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { firstName, email, dominantPattern, patternName, conditions, counts } = req.body;
+  const { firstName, lastName, email, dominantPattern, patternName, conditions, counts } = req.body;
 
   if (!firstName || !email) {
     return res.status(400).json({ error: 'Name and email required' });
@@ -40,6 +40,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         given_name: firstName,
+        family_name: lastName || '',
         email_address: email,
         note: note,
         reference_id: `bodyspeaks-${Date.now()}`,
