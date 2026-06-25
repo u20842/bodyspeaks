@@ -574,10 +574,11 @@ function buildResultPayload(){
   const holisticBox = document.getElementById('holisticBox');
   const holisticHeadline = holisticBox?.querySelector('h3')?.textContent?.trim() || '';
 const holisticParagraphs = [...(holisticBox?.querySelectorAll('.holistic-body p') || [])].map(p => {
-  const clone = p.cloneNode(true);
-  const strong = clone.querySelector('strong');
-  if (strong) strong.remove();
-  return clone.textContent.trim();
+  const html = p.innerHTML;
+  const stripped = html.replace(/<strong>[^<]*<\/strong>\s*/gi, '');
+  const temp = document.createElement('div');
+  temp.innerHTML = stripped;
+  return temp.textContent.trim();
 });
 
   return {
