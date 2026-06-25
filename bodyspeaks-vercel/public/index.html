@@ -256,6 +256,10 @@ footer a{color:var(--teal);text-decoration:none;}
         <input type="text" class="form-input" id="fname" placeholder="Your first name">
       </div>
       <div class="form-group">
+        <label class="form-label" for="flname">Last Name</label>
+        <input type="text" class="form-input" id="flname" placeholder="Your last name">
+      </div>
+      <div class="form-group">
         <label class="form-label" for="femail">Email Address</label>
         <input type="email" class="form-input" id="femail" placeholder="Your email address">
       </div>
@@ -453,7 +457,7 @@ const PI = {
 // ═══════════════════════════════════════════════
 let sel = new Set();
 let activeCat = 'All';
-let uName = '', uEmail = '';
+let uName = '', uLName = '', uEmail = '';
 
 // ═══════════════════════════════════════════════
 // INIT
@@ -525,6 +529,7 @@ function toEmail(){
 
 function toResults(skip){
   uName  = skip ? '' : document.getElementById('fname').value.trim();
+  uLName = skip ? '' : document.getElementById('flname').value.trim();
   uEmail = skip ? '' : document.getElementById('femail').value.trim();
   buildResults();
   show('p3');
@@ -539,7 +544,7 @@ function show(id){
 }
 
 function reset(){
-  sel.clear(); uName=''; uEmail=''; activeCat='All';
+  sel.clear(); uName=''; uLName=''; uEmail=''; activeCat='All';
   document.querySelectorAll('.cat-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
   document.getElementById('searchInput').value='';
   document.getElementById('selNum').textContent='0';
@@ -573,7 +578,7 @@ function buildResultPayload(){
   return {
     // Make.com / Google Docs fields
     firstName: uName,
-    lastName: '',
+    lastName: uLName,
     email: uEmail,
     dominantPattern: dominant,
     dominantPatternName: PI[dominant].name,
