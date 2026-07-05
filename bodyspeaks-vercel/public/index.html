@@ -163,6 +163,13 @@ h1 em{font-style:italic;color:var(--teal);}
 .result-item.A .r-tag{color:var(--A);border-color:rgba(201,168,76,0.3);}
 .result-item.S .r-tag{color:var(--S);border-color:rgba(224,112,96,0.3);}
 .result-item.T .r-tag{color:var(--T);border-color:rgba(139,126,200,0.3);}
+.condlist-group{margin-bottom:1.4rem;}
+.condlist-group-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);}
+.condlist-group-letter{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;width:1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1.5px solid currentColor;flex-shrink:0;}
+.condlist-group-letter.P{color:var(--P);} .condlist-group-letter.A{color:var(--A);}
+.condlist-group-letter.S{color:var(--S);} .condlist-group-letter.T{color:var(--T);}
+.condlist-group-title{font-size:0.85rem;font-weight:600;letter-spacing:0.02em;}
+.condlist-group-count{margin-left:auto;font-size:0.7rem;color:var(--text-light);}
 
 /* TAGLINE */
 .tagline-block{text-align:center;padding:2.2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:2.5rem 0;}
@@ -591,6 +598,8 @@ function buildResultPayload(){
   const holisticHeadline = holisticPlain.headline || '';
   const holisticParagraphs = [holisticPlain.p1, holisticPlain.p2, holisticPlain.p3, holisticPlain.p4];
 
+  const conditionBoxImageUrl = 'https://bodyspeaks.icu-1111.com/api/condition-boxes?ids=' + items.map(c=>c.id).join(',');
+
   return {
     // Make.com / Google Docs fields
     firstName: uName,
@@ -612,6 +621,7 @@ function buildResultPayload(){
     holisticP2: holisticParagraphs[1] || '',
     holisticP3: holisticParagraphs[2] || '',
     holisticP4: holisticParagraphs[3] || '',
+    conditionBoxImageUrl,
     dealStepD: '',
     dealStepE: '',
     dealStepA: '',
@@ -724,14 +734,26 @@ function buildResults(){
   // Holistic summary
   buildHolistic(items, counts, activePatterns, dominant);
 
-  // Condition list
+  // Condition list — grouped by PAST pattern, with a section header per active pattern
   document.getElementById('condList').innerHTML =
-    items.map(c=>`
-      <div class="result-item ${c.past}">
-        <div class="r-bar"></div>
-        <div style="flex:1"><div class="r-name">${c.name}</div><div class="r-msg">${c.msg}</div></div>
-        <div class="r-tag">${PI[c.past].name}</div>
-      </div>`).join('');
+    ['P','A','S','T'].filter(k=>byPAST[k].length>0).map(k=>{
+      const info = PI[k];
+      const rows = byPAST[k].map(c=>`
+        <div class="result-item ${c.past}">
+          <div class="r-bar"></div>
+          <div style="flex:1"><div class="r-name">${c.name}</div><div class="r-msg">${c.msg}</div></div>
+          <div class="r-tag">${info.name}</div>
+        </div>`).join('');
+      return `
+        <div class="condlist-group">
+          <div class="condlist-group-head">
+            <span class="condlist-group-letter ${k}">${k}</span>
+            <span class="condlist-group-title">${info.name}</span>
+            <span class="condlist-group-count">${byPAST[k].length}</span>
+          </div>
+          ${rows}
+        </div>`;
+    }).join('');
 }
 
 // ═══════════════════════════════════════════════

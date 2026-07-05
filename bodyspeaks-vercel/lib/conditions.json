@@ -1,0 +1,1747 @@
+[
+  {
+    "id": 1,
+    "name": "Autoimmune flare-ups",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "autoimmune",
+      "lupus flare",
+      "RA flare",
+      "immune attack"
+    ],
+    "msg": "The body attacking itself mirrors a pattern of self-directed criticism and suppressed worthiness. The Tank is depleted — what you're carrying is turning inward."
+  },
+  {
+    "id": 2,
+    "name": "Chronic inflammation",
+    "cat": "Immune & Inflammatory",
+    "past": "S",
+    "synonyms": [
+      "inflammation",
+      "inflammatory",
+      "swelling",
+      "inflamed"
+    ],
+    "msg": "Persistent inflammation is the body under constant pressure. The Squeeze keeps the inflammatory response perpetually activated."
+  },
+  {
+    "id": 3,
+    "name": "Rheumatoid arthritis",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "RA",
+      "rheumatoid",
+      "arthritis",
+      "joint inflammation",
+      "autoimmune arthritis"
+    ],
+    "msg": "Joints that attack themselves. This pattern connects to accumulated emotional load — what you've carried for others at the expense of what you've held for yourself."
+  },
+  {
+    "id": 4,
+    "name": "Lupus",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "SLE",
+      "systemic lupus",
+      "lupus erythematosus"
+    ],
+    "msg": "The immune system unable to distinguish self from other reflects a deep identity pattern — a self defined so long in relation to others that it no longer recognizes its own boundaries."
+  },
+  {
+    "id": 5,
+    "name": "Fibromyalgia",
+    "cat": "Immune & Inflammatory",
+    "past": "A",
+    "synonyms": [
+      "fibro",
+      "widespread pain",
+      "fibromyalgia syndrome",
+      "FMS",
+      "diffuse pain"
+    ],
+    "msg": "Widespread pain with no clear origin often accompanies years of emotional performance — smiling, managing, and showing up for everyone while the internal cost accumulates silently."
+  },
+  {
+    "id": 6,
+    "name": "Chronic fatigue syndrome",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "CFS",
+      "ME",
+      "ME/CFS",
+      "myalgic encephalomyelitis",
+      "chronic fatigue",
+      "always tired",
+      "extreme exhaustion"
+    ],
+    "msg": "Profound exhaustion that rest doesn't fix is the body's signal that the Tank is empty. You've been pouring out without replenishment for a very long time."
+  },
+  {
+    "id": 7,
+    "name": "Psoriasis",
+    "cat": "Immune & Inflammatory",
+    "past": "S",
+    "synonyms": [
+      "psoriasis",
+      "skin plaques",
+      "scaly skin",
+      "psoriatic"
+    ],
+    "msg": "The skin — our first boundary — reacts to sustained pressure. Psoriasis often flares in periods of high external demand when the internal sense of safety collapses."
+  },
+  {
+    "id": 8,
+    "name": "Eczema",
+    "cat": "Immune & Inflammatory",
+    "past": "A",
+    "synonyms": [
+      "eczema",
+      "atopic dermatitis",
+      "itchy skin",
+      "skin rash",
+      "dermatitis"
+    ],
+    "msg": "Skin that reacts to irritants mirrors a nervous system perpetually performing and watching for rejection. The surface becomes the site of emotional labor."
+  },
+  {
+    "id": 9,
+    "name": "Multiple sclerosis",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "MS",
+      "multiple sclerosis",
+      "demyelinating"
+    ],
+    "msg": "Myelin — the protective sheath — being eroded connects to patterns of self-protection worn thin over years of carrying too much for too long."
+  },
+  {
+    "id": 10,
+    "name": "Inflammatory bowel disease",
+    "cat": "Immune & Inflammatory",
+    "past": "S",
+    "synonyms": [
+      "IBD",
+      "Crohn's",
+      "Crohns",
+      "ulcerative colitis",
+      "UC",
+      "colitis",
+      "bowel inflammation"
+    ],
+    "msg": "The gut under siege. IBD frequently flares under sustained pressure, especially when there is no safe outlet for what the person is absorbing from their environment."
+  },
+  {
+    "id": 11,
+    "name": "Hashimoto's thyroiditis",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "Hashimoto",
+      "hypothyroid",
+      "underactive thyroid",
+      "low thyroid",
+      "thyroid autoimmune"
+    ],
+    "msg": "The thyroid — the regulator of how much you give and how fast you go — being attacked by your own immune system. The body is questioning its own pace and output."
+  },
+  {
+    "id": 12,
+    "name": "Celiac disease",
+    "cat": "Immune & Inflammatory",
+    "past": "P",
+    "synonyms": [
+      "celiac",
+      "coeliac",
+      "gluten intolerance",
+      "gluten sensitivity"
+    ],
+    "msg": "The body unable to tolerate a substance that seems normal to others. The Pairing — recognizing what wounds you in what others absorb without issue — is the pattern."
+  },
+  {
+    "id": 13,
+    "name": "Graves' disease",
+    "cat": "Immune & Inflammatory",
+    "past": "A",
+    "synonyms": [
+      "Graves",
+      "hyperthyroid",
+      "overactive thyroid",
+      "Graves disease"
+    ],
+    "msg": "Overactive thyroid — producing more than is sustainable. The Audition pattern: performing at maximum output, accelerating to maintain approval and avoid perceived failure."
+  },
+  {
+    "id": 14,
+    "name": "Allergies",
+    "cat": "Immune & Inflammatory",
+    "past": "S",
+    "synonyms": [
+      "allergies",
+      "allergic",
+      "allergy",
+      "hay fever",
+      "seasonal allergies",
+      "allergic reaction"
+    ],
+    "msg": "Hypersensitive immune response to ordinary stimuli reflects a nervous system in chronic Squeeze — threat-detecting even where others sense none."
+  },
+  {
+    "id": 15,
+    "name": "Food sensitivities",
+    "cat": "Immune & Inflammatory",
+    "past": "P",
+    "synonyms": [
+      "food sensitivity",
+      "food intolerance",
+      "food reactions",
+      "digestive sensitivity"
+    ],
+    "msg": "What nourishes others depletes you. The Pairing recognizes this pattern: you absorb the same substances differently because your system has been conditioned to heightened response."
+  },
+  {
+    "id": 16,
+    "name": "Frequent infections",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "frequent infections",
+      "getting sick often",
+      "low immunity",
+      "immune deficiency",
+      "sick all the time"
+    ],
+    "msg": "When the Tank is depleted, immunity lowers. The body's defense system can only operate at the level of resources available — and yours may be chronically overdrawn."
+  },
+  {
+    "id": 17,
+    "name": "Slow wound healing",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "slow healing",
+      "wounds won't heal",
+      "poor healing",
+      "delayed healing"
+    ],
+    "msg": "The body allocates healing resources last when in survival mode. Chronic stress diverts repair capacity. The Tank pattern: nothing left for self-restoration."
+  },
+  {
+    "id": 18,
+    "name": "Swollen lymph nodes",
+    "cat": "Immune & Inflammatory",
+    "past": "S",
+    "synonyms": [
+      "swollen glands",
+      "lymph nodes",
+      "lymphadenopathy",
+      "swollen neck glands"
+    ],
+    "msg": "The lymphatic system in activation. Sustained Squeeze keeps the system in perpetual high-alert, unable to clear and reset."
+  },
+  {
+    "id": 19,
+    "name": "Chronic sinusitis",
+    "cat": "Immune & Inflammatory",
+    "past": "A",
+    "synonyms": [
+      "sinus",
+      "sinusitis",
+      "sinus infection",
+      "chronic sinus",
+      "nasal congestion",
+      "stuffy nose"
+    ],
+    "msg": "The nasal passages in ongoing inflammation. Often connected to emotional patterns of filtering what is allowed in and out of your life."
+  },
+  {
+    "id": 20,
+    "name": "Mast cell activation",
+    "cat": "Immune & Inflammatory",
+    "past": "S",
+    "synonyms": [
+      "MCAS",
+      "mast cell",
+      "mast cell syndrome",
+      "histamine intolerance",
+      "histamine"
+    ],
+    "msg": "A system that cannot distinguish real threat from perceived threat. The Squeeze trains the body into perpetual defensive posture — responding to everything as an emergency."
+  },
+  {
+    "id": 21,
+    "name": "IBS (Irritable Bowel Syndrome)",
+    "cat": "Digestive & Gut",
+    "past": "S",
+    "synonyms": [
+      "IBS",
+      "irritable bowel",
+      "irritable bowel syndrome",
+      "bowel issues",
+      "gut pain",
+      "abdominal cramps"
+    ],
+    "msg": "The gut is the second brain. IBS is the body's literal Squeeze response — contracting, cramping, and reacting to what cannot be processed or released."
+  },
+  {
+    "id": 22,
+    "name": "Acid reflux / GERD",
+    "cat": "Digestive & Gut",
+    "past": "A",
+    "synonyms": [
+      "acid reflux",
+      "GERD",
+      "heartburn",
+      "indigestion",
+      "acid",
+      "reflux",
+      "gastroesophageal"
+    ],
+    "msg": "What rises when you lie down. GERD frequently accompanies patterns of swallowing emotions — performing calm while acid builds below the surface."
+  },
+  {
+    "id": 23,
+    "name": "Bloating",
+    "cat": "Digestive & Gut",
+    "past": "T",
+    "synonyms": [
+      "bloating",
+      "bloated",
+      "gas",
+      "distended stomach",
+      "stomach bloat",
+      "belly bloat"
+    ],
+    "msg": "The gut unable to move efficiently. What is held — emotionally and physically — accumulates. The Tank pattern: everything stays in, nothing releases cleanly."
+  },
+  {
+    "id": 24,
+    "name": "Constipation",
+    "cat": "Digestive & Gut",
+    "past": "T",
+    "synonyms": [
+      "constipation",
+      "can't go",
+      "difficulty having bowel movements",
+      "infrequent bowel movements"
+    ],
+    "msg": "The body holding on. Constipation patterns mirror emotional holding — difficulty releasing control, vulnerability, or experiences never fully processed."
+  },
+  {
+    "id": 25,
+    "name": "Diarrhea / urgency",
+    "cat": "Digestive & Gut",
+    "past": "S",
+    "synonyms": [
+      "diarrhea",
+      "diarrhoea",
+      "loose stools",
+      "urgency",
+      "bowel urgency",
+      "urgent bowel"
+    ],
+    "msg": "The body expelling under pressure. The Squeeze produces urgency — an uncontrolled release mirroring the experience of chronic overwhelm breaking through containment."
+  },
+  {
+    "id": 26,
+    "name": "Nausea",
+    "cat": "Digestive & Gut",
+    "past": "A",
+    "synonyms": [
+      "nausea",
+      "nauseous",
+      "sick to stomach",
+      "queasiness",
+      "queasy",
+      "feeling sick"
+    ],
+    "msg": "The stomach's rejection response. Chronic nausea often accompanies sustained emotional performance — the body's signal that something it's being asked to digest doesn't sit right."
+  },
+  {
+    "id": 27,
+    "name": "Loss of appetite",
+    "cat": "Digestive & Gut",
+    "past": "T",
+    "synonyms": [
+      "no appetite",
+      "loss of appetite",
+      "not hungry",
+      "can't eat",
+      "don't want to eat"
+    ],
+    "msg": "The Tank depleted past the point of hunger. When survival resources are consumed managing emotional load, the body's appetite signals often go offline."
+  },
+  {
+    "id": 28,
+    "name": "Emotional eating",
+    "cat": "Digestive & Gut",
+    "past": "A",
+    "synonyms": [
+      "emotional eating",
+      "stress eating",
+      "binge eating",
+      "comfort eating",
+      "food cravings",
+      "eating feelings"
+    ],
+    "msg": "Using food to perform comfort for yourself. The Audition pattern: meeting your own unmet need through a substitute that doesn't require you to be seen or received."
+  },
+  {
+    "id": 29,
+    "name": "Gastritis",
+    "cat": "Digestive & Gut",
+    "past": "S",
+    "synonyms": [
+      "gastritis",
+      "stomach inflammation",
+      "stomach pain",
+      "gastric pain",
+      "stomach lining"
+    ],
+    "msg": "The stomach lining under siege. Gastritis is the Squeeze made visceral — sustained pressure breaking down the body's own protective barriers from the inside out."
+  },
+  {
+    "id": 30,
+    "name": "Leaky gut syndrome",
+    "cat": "Digestive & Gut",
+    "past": "P",
+    "synonyms": [
+      "leaky gut",
+      "intestinal permeability",
+      "gut permeability",
+      "leaky gut syndrome"
+    ],
+    "msg": "Boundaries that no longer hold. The gut lining — like a personal boundary — has been worn thin. The Pairing pattern: absorbing what others repel because your boundaries were never reinforced."
+  },
+  {
+    "id": 31,
+    "name": "High blood pressure",
+    "cat": "Cardiovascular",
+    "past": "S",
+    "synonyms": [
+      "high blood pressure",
+      "hypertension",
+      "HTN",
+      "elevated blood pressure",
+      "high BP",
+      "blood pressure",
+      "BP"
+    ],
+    "msg": "Sustained pressure in the vascular system. The Squeeze — the state of constant external demand — is measured directly in millimeters of mercury. The body keeps score precisely."
+  },
+  {
+    "id": 32,
+    "name": "Heart palpitations",
+    "cat": "Cardiovascular",
+    "past": "A",
+    "synonyms": [
+      "palpitations",
+      "heart racing",
+      "racing heart",
+      "heart flutter",
+      "heart flutters",
+      "irregular heartbeat",
+      "skipped beats"
+    ],
+    "msg": "The heart performing irregularly. Palpitations often accompany performance anxiety — the Audition pattern activating the body's alert system before an audience, real or imagined."
+  },
+  {
+    "id": 33,
+    "name": "Chest tightness",
+    "cat": "Cardiovascular",
+    "past": "S",
+    "synonyms": [
+      "chest tight",
+      "chest tightness",
+      "chest pressure",
+      "tightness in chest",
+      "chest constriction",
+      "chest pain"
+    ],
+    "msg": "The chest — the seat of vulnerability — constricting under pressure. This is the Squeeze embodied: the body protecting the heart by armoring what surrounds it."
+  },
+  {
+    "id": 34,
+    "name": "Arrhythmia",
+    "cat": "Cardiovascular",
+    "past": "T",
+    "synonyms": [
+      "arrhythmia",
+      "irregular heartbeat",
+      "AFib",
+      "atrial fibrillation",
+      "heart rhythm",
+      "abnormal heart rhythm"
+    ],
+    "msg": "A heart rhythm disrupted by what's been accumulated. The Tank overload interferes with the body's most fundamental rhythm."
+  },
+  {
+    "id": 35,
+    "name": "Poor circulation",
+    "cat": "Cardiovascular",
+    "past": "T",
+    "synonyms": [
+      "poor circulation",
+      "cold hands",
+      "cold feet",
+      "cold extremities",
+      "circulation problems"
+    ],
+    "msg": "Resources not reaching the periphery. When the Tank is depleted, the body prioritizes core survival — extremities, creativity, and future-orientation lose their supply first."
+  },
+  {
+    "id": 36,
+    "name": "Raynaud's phenomenon",
+    "cat": "Cardiovascular",
+    "past": "P",
+    "synonyms": [
+      "Raynaud",
+      "Raynaud's",
+      "Raynauds",
+      "fingers turning white",
+      "fingers turning blue",
+      "cold fingers"
+    ],
+    "msg": "The body withdrawing blood from its extremities in response to perceived threat. The Pairing pattern: hyperresponsive to environmental signals others barely register."
+  },
+  {
+    "id": 37,
+    "name": "Varicose veins",
+    "cat": "Cardiovascular",
+    "past": "T",
+    "synonyms": [
+      "varicose veins",
+      "spider veins",
+      "varicosities",
+      "vein problems"
+    ],
+    "msg": "Blood pooling — not returning efficiently. Carrying the accumulated weight of what hasn't circulated back. The Tank pattern: what goes out doesn't come back replenished."
+  },
+  {
+    "id": 38,
+    "name": "Frequent headaches",
+    "cat": "Cardiovascular",
+    "past": "S",
+    "synonyms": [
+      "headaches",
+      "headache",
+      "migraine",
+      "migraines",
+      "tension headache",
+      "chronic headache",
+      "head pain"
+    ],
+    "msg": "The head under pressure. Chronic headaches are among the body's clearest Squeeze signals — the system at capacity, blood vessels responding to sustained cortisol load."
+  },
+  {
+    "id": 39,
+    "name": "Chronic anxiety",
+    "cat": "Nervous System",
+    "past": "A",
+    "synonyms": [
+      "anxiety",
+      "anxious",
+      "anxiety disorder",
+      "generalized anxiety",
+      "GAD",
+      "worried all the time",
+      "constant worry",
+      "nervousness"
+    ],
+    "msg": "The nervous system in perpetual performance mode. Chronic anxiety is the Audition that never ends — the body preparing for an audience that may never arrive, or one that's always there."
+  },
+  {
+    "id": 40,
+    "name": "Panic attacks",
+    "cat": "Nervous System",
+    "past": "S",
+    "synonyms": [
+      "panic attack",
+      "panic attacks",
+      "panic disorder",
+      "sudden fear",
+      "sudden anxiety",
+      "can't breathe",
+      "heart attack feeling"
+    ],
+    "msg": "The Squeeze reaching a breaking point. A panic attack is the body's emergency broadcast — accumulated pressure finding a sudden, undeniable exit."
+  },
+  {
+    "id": 41,
+    "name": "Depression",
+    "cat": "Nervous System",
+    "past": "T",
+    "synonyms": [
+      "depression",
+      "depressed",
+      "MDD",
+      "major depression",
+      "feeling hopeless",
+      "no joy",
+      "anhedonia",
+      "low mood",
+      "persistent sadness"
+    ],
+    "msg": "The Tank emptied past the point of motivation. Depression often follows years of depletion — a system that simply no longer has the resources to generate forward momentum."
+  },
+  {
+    "id": 42,
+    "name": "Brain fog",
+    "cat": "Nervous System",
+    "past": "T",
+    "synonyms": [
+      "brain fog",
+      "can't think clearly",
+      "mental fog",
+      "cognitive fog",
+      "memory issues",
+      "can't concentrate",
+      "poor memory",
+      "forgetfulness"
+    ],
+    "msg": "Cognitive resources redirected to survival. When the Tank is depleted, the brain's higher functions — clarity, creativity, decision-making — lose their fuel first."
+  },
+  {
+    "id": 43,
+    "name": "Dizziness / vertigo",
+    "cat": "Nervous System",
+    "past": "S",
+    "synonyms": [
+      "dizziness",
+      "dizzy",
+      "vertigo",
+      "lightheaded",
+      "lightheadedness",
+      "spinning",
+      "off balance",
+      "balance problems"
+    ],
+    "msg": "The world off-balance. Vertigo and dizziness often accompany periods when the Squeeze has disoriented the body's sense of stable ground — literally and figuratively."
+  },
+  {
+    "id": 44,
+    "name": "Tinnitus (ringing in ears)",
+    "cat": "Nervous System",
+    "past": "S",
+    "synonyms": [
+      "tinnitus",
+      "ringing ears",
+      "ringing in ears",
+      "ear ringing",
+      "noise in ears",
+      "buzzing ears"
+    ],
+    "msg": "A signal that won't stop. Tinnitus can accompany sustained nervous system activation — the body creating its own noise when external pressure has been internalized for too long."
+  },
+  {
+    "id": 45,
+    "name": "Tremors / shaking",
+    "cat": "Nervous System",
+    "past": "A",
+    "synonyms": [
+      "tremors",
+      "shaking",
+      "trembling",
+      "uncontrollable shaking",
+      "essential tremor",
+      "hands shake"
+    ],
+    "msg": "The body vibrating with what it cannot express. Tremors often accompany sustained emotional suppression — the Audition pattern holding still while the nervous system oscillates."
+  },
+  {
+    "id": 46,
+    "name": "Numbness / tingling",
+    "cat": "Nervous System",
+    "past": "T",
+    "synonyms": [
+      "numbness",
+      "tingling",
+      "pins and needles",
+      "numb",
+      "nerve tingling",
+      "peripheral neuropathy",
+      "neuropathy"
+    ],
+    "msg": "Sensation shutting down. The Tank pattern extended: when the load exceeds capacity, the nervous system begins to go quiet — disconnecting from what it can no longer afford to feel."
+  },
+  {
+    "id": 47,
+    "name": "Hypervigilance",
+    "cat": "Nervous System",
+    "past": "P",
+    "synonyms": [
+      "hypervigilance",
+      "always alert",
+      "can't relax",
+      "on edge",
+      "startle easily",
+      "jumpy",
+      "easily startled",
+      "PTSD symptoms"
+    ],
+    "msg": "The nervous system trained to detect threat before it arrives. The Pairing: your system learned early that danger wears a familiar face, and it has not stopped scanning since."
+  },
+  {
+    "id": 48,
+    "name": "Dissociation",
+    "cat": "Nervous System",
+    "past": "T",
+    "synonyms": [
+      "dissociation",
+      "dissociating",
+      "depersonalization",
+      "derealization",
+      "out of body",
+      "feeling unreal",
+      "spaced out",
+      "zoning out"
+    ],
+    "msg": "Leaving the body to survive it. Dissociation is the nervous system's most complete protective strategy — the Tank so overloaded that consciousness retreats to protect the person inside."
+  },
+  {
+    "id": 49,
+    "name": "Thyroid dysfunction",
+    "cat": "Hormonal & Metabolic",
+    "past": "T",
+    "synonyms": [
+      "thyroid",
+      "thyroid problems",
+      "thyroid disorder",
+      "thyroid disease",
+      "thyroid issues",
+      "hypothyroid",
+      "hyperthyroid"
+    ],
+    "msg": "The thyroid governs pace and output. Dysfunction mirrors the body's attempt to regulate a system asked to produce more than is sustainable."
+  },
+  {
+    "id": 50,
+    "name": "Adrenal fatigue",
+    "cat": "Hormonal & Metabolic",
+    "past": "S",
+    "synonyms": [
+      "adrenal fatigue",
+      "adrenal exhaustion",
+      "adrenal burnout",
+      "HPA axis",
+      "cortisol depletion"
+    ],
+    "msg": "The adrenal glands — the Squeeze organs — depleted from sustained cortisol production. The body burned through its stress reserves and is now running on reserves of reserves."
+  },
+  {
+    "id": 51,
+    "name": "Cortisol dysregulation",
+    "cat": "Hormonal & Metabolic",
+    "past": "S",
+    "synonyms": [
+      "cortisol",
+      "high cortisol",
+      "low cortisol",
+      "cortisol imbalance",
+      "stress hormones",
+      "HPA dysfunction"
+    ],
+    "msg": "The stress hormone system miscalibrated. When the Squeeze is chronic, cortisol rhythms flatten — too high when rest is needed, too low when activation is required."
+  },
+  {
+    "id": 52,
+    "name": "Blood sugar instability",
+    "cat": "Hormonal & Metabolic",
+    "past": "A",
+    "synonyms": [
+      "blood sugar",
+      "blood glucose",
+      "sugar crashes",
+      "hypoglycemia",
+      "reactive hypoglycemia",
+      "glucose instability",
+      "sugar swings"
+    ],
+    "msg": "Energy that spikes and crashes mirrors the Audition cycle — performing intensely, then collapsing when the performance ends. The body learns to regulate around the emotional rhythm."
+  },
+  {
+    "id": 53,
+    "name": "Unexplained weight gain",
+    "cat": "Hormonal & Metabolic",
+    "past": "T",
+    "synonyms": [
+      "weight gain",
+      "gaining weight",
+      "unexplained weight gain",
+      "can't lose weight",
+      "putting on weight"
+    ],
+    "msg": "The body in conservation mode. Chronic stress signals scarcity — the body stores what it has because the Tank pattern has taught it that replenishment cannot be assumed."
+  },
+  {
+    "id": 54,
+    "name": "Difficulty losing weight",
+    "cat": "Hormonal & Metabolic",
+    "past": "S",
+    "synonyms": [
+      "can't lose weight",
+      "weight loss resistance",
+      "stubborn weight",
+      "plateau",
+      "no weight loss"
+    ],
+    "msg": "Cortisol-driven fat storage. Under sustained Squeeze, the body prioritizes survival over metabolism — holding reserves against a threat it believes is ongoing."
+  },
+  {
+    "id": 55,
+    "name": "Metabolic syndrome",
+    "cat": "Hormonal & Metabolic",
+    "past": "S",
+    "synonyms": [
+      "metabolic syndrome",
+      "insulin resistance",
+      "pre-diabetes",
+      "prediabetes",
+      "metabolic disorder"
+    ],
+    "msg": "Multiple systems under pressure simultaneously. Metabolic syndrome is the Squeeze made systemic — when no single system can compensate, the whole pattern becomes visible."
+  },
+  {
+    "id": 56,
+    "name": "Hormonal imbalances",
+    "cat": "Hormonal & Metabolic",
+    "past": "A",
+    "synonyms": [
+      "hormonal imbalance",
+      "hormone imbalance",
+      "hormones off",
+      "estrogen dominance",
+      "progesterone low",
+      "hormonal problems"
+    ],
+    "msg": "Hormones that shift based on what's being performed for others. The Audition pattern disrupts the body's natural hormonal rhythm as it adapts to sustained emotional output."
+  },
+  {
+    "id": 57,
+    "name": "PCOS (polycystic ovary syndrome)",
+    "cat": "Hormonal & Metabolic",
+    "past": "T",
+    "synonyms": [
+      "PCOS",
+      "polycystic ovary",
+      "polycystic ovaries",
+      "polycystic ovary syndrome",
+      "ovarian cysts"
+    ],
+    "msg": "Hormonal dysregulation connected to the body's response to sustained depletion. The Tank overloaded disrupts the delicate hormonal systems that require safety and sufficiency to regulate."
+  },
+  {
+    "id": 58,
+    "name": "Diabetes / insulin resistance",
+    "cat": "Hormonal & Metabolic",
+    "past": "S",
+    "synonyms": [
+      "diabetes",
+      "type 2 diabetes",
+      "insulin resistance",
+      "diabetic",
+      "high blood sugar",
+      "hyperglycemia"
+    ],
+    "msg": "The body unable to process what it's receiving efficiently. Insulin resistance mirrors the Squeeze — cells that have stopped responding normally to normal signals after too long under duress."
+  },
+  {
+    "id": 59,
+    "name": "Chronic back pain",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "back pain",
+      "lower back pain",
+      "back ache",
+      "backache",
+      "lumbar pain",
+      "spinal pain",
+      "chronic back"
+    ],
+    "msg": "The back carries what we refuse to put down. Chronic lower back pain is the Tank made physical — the body bearing the weight of everything accumulated and never released."
+  },
+  {
+    "id": 60,
+    "name": "Neck and shoulder tension",
+    "cat": "Musculoskeletal",
+    "past": "A",
+    "synonyms": [
+      "neck pain",
+      "shoulder pain",
+      "neck tension",
+      "tight shoulders",
+      "shoulder tension",
+      "tight neck",
+      "stiff neck",
+      "neck stiffness"
+    ],
+    "msg": "The muscles of performance — holding the head high, shoulders back. Chronic tension here accompanies the Audition: the constant preparation of the body to be seen and evaluated."
+  },
+  {
+    "id": 61,
+    "name": "Jaw clenching / TMJ",
+    "cat": "Musculoskeletal",
+    "past": "S",
+    "synonyms": [
+      "TMJ",
+      "jaw clenching",
+      "jaw pain",
+      "teeth grinding",
+      "bruxism",
+      "grinding teeth",
+      "temporomandibular",
+      "clenching jaw"
+    ],
+    "msg": "The jaw holds what cannot be said. Clenching is the Squeeze localized — pressure accumulated in the face, in the words that were swallowed, in the responses that were suppressed."
+  },
+  {
+    "id": 62,
+    "name": "Joint pain",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "joint pain",
+      "achy joints",
+      "painful joints",
+      "joint ache",
+      "arthralgia",
+      "stiff joints"
+    ],
+    "msg": "The joints — the places of connection and movement — in pain. The Tank pattern: the load you've been carrying has begun to wear on the structures meant to keep you flexible and forward-moving."
+  },
+  {
+    "id": 63,
+    "name": "Muscle tension / tightness",
+    "cat": "Musculoskeletal",
+    "past": "S",
+    "synonyms": [
+      "muscle tension",
+      "tight muscles",
+      "muscle tightness",
+      "muscle stiffness",
+      "tense muscles",
+      "stiff muscles"
+    ],
+    "msg": "The body braced. Chronic muscle tension is the Squeeze embodied — the system prepared for impact, held in readiness for a blow that never fully lands or never stops coming."
+  },
+  {
+    "id": 64,
+    "name": "Chronic pain syndrome",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "chronic pain",
+      "pain all over",
+      "widespread chronic pain",
+      "pain syndrome",
+      "body pain"
+    ],
+    "msg": "Pain that has become the baseline. The Tank depleted past the point of acute signaling — the body has normalized the emergency."
+  },
+  {
+    "id": 65,
+    "name": "Sciatica",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "sciatica",
+      "sciatic pain",
+      "sciatic nerve",
+      "sciatic nerve pain",
+      "leg nerve pain",
+      "shooting leg pain"
+    ],
+    "msg": "The longest nerve in the body under pressure. Sciatica carries the Tank pattern — the weight of long-held burdens pressing on the pathways meant to move you forward."
+  },
+  {
+    "id": 66,
+    "name": "Osteoporosis",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "osteoporosis",
+      "bone loss",
+      "low bone density",
+      "bone thinning",
+      "osteopenia"
+    ],
+    "msg": "Bones losing density. Structure not being replenished. The Tank: when resources are diverted to managing the chronic load, rebuilding core structure is deferred indefinitely."
+  },
+  {
+    "id": 67,
+    "name": "Carpal tunnel syndrome",
+    "cat": "Musculoskeletal",
+    "past": "A",
+    "synonyms": [
+      "carpal tunnel",
+      "wrist pain",
+      "hand numbness",
+      "CTS",
+      "wrist tingling",
+      "hand pain"
+    ],
+    "msg": "The hands — the instruments of doing and giving — in pain. Carpal tunnel often accompanies the Audition: performing service, output, and care for others until the doing itself becomes unsustainable."
+  },
+  {
+    "id": 68,
+    "name": "Plantar fasciitis",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "plantar fasciitis",
+      "heel pain",
+      "foot pain",
+      "bottom of foot pain",
+      "arch pain"
+    ],
+    "msg": "The foundation of your movement in pain. The Tank: what you're standing on — your sense of support, ground, and capacity to keep going — has been bearing more than it was built to hold."
+  },
+  {
+    "id": 69,
+    "name": "Hair loss / alopecia",
+    "cat": "Skin & Hair",
+    "past": "S",
+    "synonyms": [
+      "hair loss",
+      "alopecia",
+      "losing hair",
+      "thinning hair",
+      "bald patches",
+      "baldness",
+      "hair thinning",
+      "hair falling out"
+    ],
+    "msg": "The body shedding under pressure. Hair loss during sustained stress is one of the body's most visible Squeeze responses — resources redirected, non-essential systems downregulated."
+  },
+  {
+    "id": 70,
+    "name": "Hives / urticaria",
+    "cat": "Skin & Hair",
+    "past": "P",
+    "synonyms": [
+      "hives",
+      "urticaria",
+      "welts",
+      "skin welts",
+      "itchy bumps",
+      "allergic hives"
+    ],
+    "msg": "The skin reacting to something in the environment. The Pairing pattern: your system flags as threat what others absorb without response. Something familiar is triggering an outsized alarm."
+  },
+  {
+    "id": 71,
+    "name": "Rosacea",
+    "cat": "Skin & Hair",
+    "past": "A",
+    "synonyms": [
+      "rosacea",
+      "facial redness",
+      "red face",
+      "flushing",
+      "blushing",
+      "facial flushing"
+    ],
+    "msg": "The face flushing — the visible surface of the Audition. Rosacea often accompanies performance-based anxiety: the skin broadcasting the internal state that the performance is designed to conceal."
+  },
+  {
+    "id": 72,
+    "name": "Acne / skin breakouts",
+    "cat": "Skin & Hair",
+    "past": "S",
+    "synonyms": [
+      "acne",
+      "breakouts",
+      "pimples",
+      "skin breakouts",
+      "stress acne",
+      "cystic acne",
+      "blemishes"
+    ],
+    "msg": "The skin attempting to release what the body is carrying. Stress-driven acne is the Squeeze finding expression at the surface — pressure seeking an outlet."
+  },
+  {
+    "id": 73,
+    "name": "Premature aging",
+    "cat": "Skin & Hair",
+    "past": "T",
+    "synonyms": [
+      "premature aging",
+      "aging fast",
+      "looking older",
+      "wrinkles",
+      "fine lines",
+      "skin aging",
+      "early aging"
+    ],
+    "msg": "The body aging faster than its years. The Tank depleted chronically accelerates cellular aging — the biological cost of carrying too much for too long is written on the face and skin."
+  },
+  {
+    "id": 74,
+    "name": "Excessive sweating",
+    "cat": "Skin & Hair",
+    "past": "A",
+    "synonyms": [
+      "excessive sweating",
+      "hyperhidrosis",
+      "sweating too much",
+      "night sweats",
+      "sweating anxiety"
+    ],
+    "msg": "The body releasing heat from performance. Hyperhidrosis often accompanies the Audition pattern — the physical response to sustained social evaluation, real or anticipated."
+  },
+  {
+    "id": 75,
+    "name": "Brittle nails",
+    "cat": "Skin & Hair",
+    "past": "T",
+    "synonyms": [
+      "brittle nails",
+      "nails breaking",
+      "weak nails",
+      "peeling nails",
+      "nail breakage"
+    ],
+    "msg": "Structure failing at the edges. Brittle nails reflect nutritional and stress depletion — the Tank: what is needed for maintenance and repair is being diverted elsewhere."
+  },
+  {
+    "id": 76,
+    "name": "Skin picking / scratching",
+    "cat": "Skin & Hair",
+    "past": "A",
+    "synonyms": [
+      "skin picking",
+      "scratching",
+      "dermatillomania",
+      "excoriation",
+      "picking skin",
+      "compulsive picking"
+    ],
+    "msg": "The hands working on the surface of the self. Skin picking connects to the Audition — a form of self-editing, finding and eliminating perceived imperfection."
+  },
+  {
+    "id": 77,
+    "name": "Burnout",
+    "cat": "Mental & Emotional",
+    "past": "T",
+    "synonyms": [
+      "burnout",
+      "burned out",
+      "burnt out",
+      "exhausted",
+      "depleted",
+      "empty",
+      "running on empty",
+      "nothing left"
+    ],
+    "msg": "The Tank empty. Burnout is not a character flaw — it is the predictable outcome of the Tank pattern run to its conclusion: pouring out indefinitely without a source of replenishment."
+  },
+  {
+    "id": 78,
+    "name": "Emotional numbness",
+    "cat": "Mental & Emotional",
+    "past": "T",
+    "synonyms": [
+      "emotional numbness",
+      "numb",
+      "can't feel",
+      "feeling nothing",
+      "flat affect",
+      "disconnected emotionally"
+    ],
+    "msg": "The system shutting down to survive. Emotional numbness is what happens when the Tank has been empty long enough that feeling itself becomes a resource the body conserves."
+  },
+  {
+    "id": 79,
+    "name": "Rage / anger outbursts",
+    "cat": "Mental & Emotional",
+    "past": "S",
+    "synonyms": [
+      "rage",
+      "anger",
+      "anger outbursts",
+      "explosive anger",
+      "anger issues",
+      "short fuse",
+      "temper",
+      "lose temper"
+    ],
+    "msg": "The Squeeze reaching its limit. Rage is not the problem — it is the Squeeze breaking its own container. The pattern was always there. The outburst is just when it became visible."
+  },
+  {
+    "id": 80,
+    "name": "Persistent sadness",
+    "cat": "Mental & Emotional",
+    "past": "T",
+    "synonyms": [
+      "sadness",
+      "always sad",
+      "crying",
+      "grief",
+      "persistent sadness",
+      "can't stop crying",
+      "sadness that won't lift"
+    ],
+    "msg": "Grief that doesn't move. Persistent sadness accompanies the Tank when what was lost — identity, worth, relationships, self — was never fully acknowledged or mourned."
+  },
+  {
+    "id": 81,
+    "name": "Shame spirals",
+    "cat": "Mental & Emotional",
+    "past": "A",
+    "synonyms": [
+      "shame",
+      "shame spiral",
+      "deep shame",
+      "feeling worthless",
+      "self loathing",
+      "I'm the problem"
+    ],
+    "msg": "The Audition internalized. Shame spirals are what happens when the performance fails — the system built on performing for love concludes the self is the problem, not the pattern."
+  },
+  {
+    "id": 82,
+    "name": "Perfectionism",
+    "cat": "Mental & Emotional",
+    "past": "A",
+    "synonyms": [
+      "perfectionism",
+      "perfectionist",
+      "never good enough",
+      "high standards",
+      "fear of mistakes",
+      "fear of failure"
+    ],
+    "msg": "The Audition in its most refined form. Perfectionism is performance-based worth operating at full capacity — the belief that flawless execution is what makes you safe to love."
+  },
+  {
+    "id": 83,
+    "name": "People-pleasing",
+    "cat": "Mental & Emotional",
+    "past": "A",
+    "synonyms": [
+      "people pleasing",
+      "people pleaser",
+      "can't say no",
+      "always helping",
+      "doormat",
+      "overly agreeable",
+      "yes person"
+    ],
+    "msg": "Performing for approval as a survival strategy. People-pleasing is the Audition codified — the system learned so early and so deeply that it now feels like personality rather than pattern."
+  },
+  {
+    "id": 84,
+    "name": "Difficulty saying no",
+    "cat": "Mental & Emotional",
+    "past": "A",
+    "synonyms": [
+      "can't say no",
+      "difficulty saying no",
+      "trouble saying no",
+      "saying no",
+      "setting limits",
+      "overcommitting",
+      "overcommitment"
+    ],
+    "msg": "The Audition with no exit. Inability to decline is the performance pattern protecting itself — 'no' feels like the end of approval, and approval still feels like the end of safety."
+  },
+  {
+    "id": 85,
+    "name": "Fear of abandonment",
+    "cat": "Mental & Emotional",
+    "past": "P",
+    "synonyms": [
+      "fear of abandonment",
+      "abandonment issues",
+      "fear of rejection",
+      "fear being left",
+      "left behind",
+      "fear of being alone"
+    ],
+    "msg": "The Pairing pattern at its deepest: a wound that knows what abandonment feels like and has built its entire relational strategy around never experiencing it again."
+  },
+  {
+    "id": 86,
+    "name": "Codependency",
+    "cat": "Mental & Emotional",
+    "past": "P",
+    "synonyms": [
+      "codependency",
+      "codependent",
+      "codependence",
+      "enmeshment",
+      "unhealthy attachment",
+      "losing self in relationships"
+    ],
+    "msg": "Wounds recognizing wounds. The Pairing: being drawn to those whose patterns mirror your own early experiences, recreating the familiar territory of your original wound."
+  },
+  {
+    "id": 87,
+    "name": "Intrusive thoughts",
+    "cat": "Mental & Emotional",
+    "past": "S",
+    "synonyms": [
+      "intrusive thoughts",
+      "unwanted thoughts",
+      "can't stop thinking",
+      "obsessive thoughts",
+      "racing thoughts",
+      "thought loops",
+      "rumination"
+    ],
+    "msg": "The mind unable to release what the Squeeze is holding. Intrusive thoughts are the nervous system's attempt to process what has not been given a safe container for resolution."
+  },
+  {
+    "id": 88,
+    "name": "Imposter syndrome",
+    "cat": "Mental & Emotional",
+    "past": "A",
+    "synonyms": [
+      "imposter syndrome",
+      "impostor syndrome",
+      "fraud feeling",
+      "feel like a fraud",
+      "not good enough",
+      "don't deserve success"
+    ],
+    "msg": "The Audition doubting its own performance. Imposter syndrome is what happens when achievement is the metric for worth — no accomplishment ever feels like enough because the measuring never stops."
+  },
+  {
+    "id": 89,
+    "name": "Insomnia",
+    "cat": "Sleep & Energy",
+    "past": "S",
+    "synonyms": [
+      "insomnia",
+      "can't sleep",
+      "trouble sleeping",
+      "sleep problems",
+      "sleep issues",
+      "not sleeping",
+      "sleeplessness"
+    ],
+    "msg": "The body unable to release the Squeeze at night. Insomnia is the system that cannot downregulate — cortisol still elevated, the threat still present, the performance still running."
+  },
+  {
+    "id": 90,
+    "name": "Waking at 3am",
+    "cat": "Sleep & Energy",
+    "past": "S",
+    "synonyms": [
+      "waking at 3am",
+      "waking up at night",
+      "waking 3am",
+      "waking up 2am",
+      "waking at 4am",
+      "middle of night waking",
+      "early morning waking"
+    ],
+    "msg": "The cortisol spike between 2-4am that interrupts sleep is a Squeeze signature. The body activating stress hormones in the hours before dawn — a pattern, not an accident."
+  },
+  {
+    "id": 91,
+    "name": "Sleeping too much",
+    "cat": "Sleep & Energy",
+    "past": "T",
+    "synonyms": [
+      "sleeping too much",
+      "oversleeping",
+      "hypersomnia",
+      "can't get out of bed",
+      "sleep all day",
+      "too much sleep"
+    ],
+    "msg": "The Tank seeking to refill through the only mechanism available — shutdown. When depletion is deep enough, the body takes what restoration it can in the only window it controls."
+  },
+  {
+    "id": 92,
+    "name": "Unrefreshing sleep",
+    "cat": "Sleep & Energy",
+    "past": "T",
+    "synonyms": [
+      "unrefreshing sleep",
+      "waking up tired",
+      "sleep doesn't help",
+      "not rested",
+      "tired after sleeping",
+      "don't feel refreshed"
+    ],
+    "msg": "Sleeping without recovering. The Tank pattern: sleep that cannot restore because the ongoing depletion — emotional, physiological, relational — continues even during rest."
+  },
+  {
+    "id": 93,
+    "name": "Afternoon energy crashes",
+    "cat": "Sleep & Energy",
+    "past": "A",
+    "synonyms": [
+      "afternoon crash",
+      "2pm crash",
+      "energy crash",
+      "afternoon slump",
+      "afternoon fatigue",
+      "3pm slump",
+      "midday crash"
+    ],
+    "msg": "The performance cycle collapsing mid-afternoon. Cortisol that peaked for the morning's demands drops sharply — the Audition has a biological cost that arrives at 2pm."
+  },
+  {
+    "id": 94,
+    "name": "Constant tiredness",
+    "cat": "Sleep & Energy",
+    "past": "T",
+    "synonyms": [
+      "always tired",
+      "constant fatigue",
+      "exhaustion",
+      "fatigue",
+      "chronic tiredness",
+      "never have energy",
+      "no energy",
+      "tired all the time"
+    ],
+    "msg": "The baseline set at depletion. When the Tank has been empty long enough, exhaustion becomes the normal against which all other states are measured."
+  },
+  {
+    "id": 95,
+    "name": "Difficulty waking up",
+    "cat": "Sleep & Energy",
+    "past": "T",
+    "synonyms": [
+      "hard to wake up",
+      "difficulty waking",
+      "can't wake up",
+      "hard to get out of bed",
+      "morning fatigue",
+      "groggy morning"
+    ],
+    "msg": "The body resistant to returning to the performance. Difficulty waking is the Tank's final resistance — the moment before the pattern resumes, the body holds on to the only rest it gets."
+  },
+  {
+    "id": 96,
+    "name": "Low motivation / apathy",
+    "cat": "Sleep & Energy",
+    "past": "T",
+    "synonyms": [
+      "low motivation",
+      "no motivation",
+      "apathy",
+      "don't care",
+      "can't motivate myself",
+      "nothing matters",
+      "loss of motivation",
+      "unmotivated"
+    ],
+    "msg": "The dopamine system depleted by chronic stress and depleted worth. Apathy is not laziness — it is the Tank empty past the point of generating desire for what comes next."
+  },
+  {
+    "id": 97,
+    "name": "Irregular menstrual cycles",
+    "cat": "Reproductive",
+    "past": "S",
+    "synonyms": [
+      "irregular periods",
+      "missed periods",
+      "irregular cycle",
+      "period problems",
+      "menstrual irregularity",
+      "skipped period",
+      "late period"
+    ],
+    "msg": "The body downregulating reproductive function under threat. The Squeeze signals that this is not a safe environment for vulnerability — cycles become the visible marker of that assessment."
+  },
+  {
+    "id": 98,
+    "name": "Fertility challenges",
+    "cat": "Reproductive",
+    "past": "T",
+    "synonyms": [
+      "infertility",
+      "fertility issues",
+      "trouble getting pregnant",
+      "can't conceive",
+      "fertility problems",
+      "IVF",
+      "not getting pregnant"
+    ],
+    "msg": "The body holding its most resource-intensive function in reserve when the Tank is depleted. Fertility requires surplus — physiological, emotional, psychological — that chronic depletion prevents."
+  },
+  {
+    "id": 99,
+    "name": "PMS / PMDD",
+    "cat": "Reproductive",
+    "past": "A",
+    "synonyms": [
+      "PMS",
+      "PMDD",
+      "premenstrual",
+      "premenstrual syndrome",
+      "premenstrual dysphoric disorder",
+      "mood before period",
+      "emotional before period"
+    ],
+    "msg": "The premenstrual window when the performance becomes hardest to maintain. PMDD amplifies what is suppressed throughout the cycle — the Audition's mask slips in the luteal phase."
+  },
+  {
+    "id": 100,
+    "name": "Sexual dysfunction",
+    "cat": "Reproductive",
+    "past": "T",
+    "synonyms": [
+      "sexual dysfunction",
+      "low libido",
+      "no sex drive",
+      "low sex drive",
+      "can't be intimate",
+      "intimacy issues",
+      "no desire"
+    ],
+    "msg": "Intimacy requires presence — and presence requires a self that is available. When the Tank is empty and the body is in survival mode, vulnerability and desire are the first capacities offline."
+  },
+  {
+    "id": 101,
+    "name": "Lipedema",
+    "cat": "Hormonal & Metabolic",
+    "past": "T",
+    "synonyms": [
+      "lipedema",
+      "lipoedema",
+      "painful fat disorder",
+      "lipedema legs",
+      "disproportionate fat",
+      "fat swelling disorder"
+    ],
+    "msg": "A body storing more than diet or exercise can explain reflects a system in prolonged accumulation mode. The Tank pattern: tissue holding what hasn't had anywhere else to go, often for years before it's ever named."
+  },
+  {
+    "id": 102,
+    "name": "Lymphedema",
+    "cat": "Cardiovascular",
+    "past": "T",
+    "synonyms": [
+      "lymphedema",
+      "lymphoedema",
+      "lymphatic swelling",
+      "chronic swelling",
+      "lymph fluid buildup",
+      "limb swelling"
+    ],
+    "msg": "Fluid that accumulates because it isn't draining and circulating back mirrors the Tank pattern precisely — what goes in doesn't return replenished, and the body has nowhere left to send the excess."
+  },
+  {
+    "id": 103,
+    "name": "Hypochondria (health anxiety)",
+    "cat": "Mental & Emotional",
+    "past": "P",
+    "synonyms": [
+      "hypochondria",
+      "health anxiety",
+      "illness anxiety",
+      "illness anxiety disorder",
+      "hypochondriac",
+      "fear of being sick",
+      "body checking"
+    ],
+    "msg": "A nervous system that scans the body the way it once had to scan a room for danger. The Pairing pattern: vigilance that once protected you from an external threat now points inward, toward your own body as the site of possible harm."
+  },
+  {
+    "id": 104,
+    "name": "Osteoarthritis",
+    "cat": "Musculoskeletal",
+    "past": "S",
+    "synonyms": [
+      "osteoarthritis",
+      "OA",
+      "degenerative joint disease",
+      "wear and tear arthritis",
+      "joint degeneration"
+    ],
+    "msg": "Joints worn down by cumulative load rather than a single injury. The Squeeze made physical — years of sustained pressure showing up exactly where the body has had to compensate the longest."
+  },
+  {
+    "id": 105,
+    "name": "Psoriatic arthritis",
+    "cat": "Immune & Inflammatory",
+    "past": "S",
+    "synonyms": [
+      "psoriatic arthritis",
+      "PsA",
+      "psoriasis with joint pain",
+      "psoriatic joint disease"
+    ],
+    "msg": "When the skin's inflammatory pattern moves inward to the joints, the Squeeze has stopped staying at the surface. What began as a boundary response now reaches structure — pressure accumulating deeper than before."
+  },
+  {
+    "id": 106,
+    "name": "Ankylosing spondylitis",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "ankylosing spondylitis",
+      "AS",
+      "spinal arthritis",
+      "spine fusion",
+      "axial spondyloarthritis"
+    ],
+    "msg": "The spine gradually fusing under sustained inflammatory load. The Tank pattern taken to its structural extreme — the body building rigidity around what it has had to carry for far too long without relief."
+  },
+  {
+    "id": 107,
+    "name": "Gout",
+    "cat": "Musculoskeletal",
+    "past": "S",
+    "synonyms": [
+      "gout",
+      "gouty arthritis",
+      "uric acid buildup",
+      "gout flare",
+      "gout attack"
+    ],
+    "msg": "A sudden, sharp flare after a slow accumulation no one noticed building. Gout mirrors the Squeeze precisely — pressure that gathers quietly until it reaches an undeniable breaking point in a single joint."
+  },
+  {
+    "id": 108,
+    "name": "Sjögren's syndrome",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "Sjogren's",
+      "Sjogrens syndrome",
+      "dry eyes and mouth",
+      "autoimmune dryness",
+      "sicca syndrome"
+    ],
+    "msg": "Glands that stop producing what they once did freely. Sjögren's mirrors the Tank at its most literal — a body that has been asked to secrete, comfort, and moisten for so long that the wells have run dry."
+  },
+  {
+    "id": 109,
+    "name": "Scleroderma (systemic sclerosis)",
+    "cat": "Immune & Inflammatory",
+    "past": "T",
+    "synonyms": [
+      "scleroderma",
+      "systemic sclerosis",
+      "skin hardening",
+      "fibrosis of skin"
+    ],
+    "msg": "Tissue thickening and hardening where softness used to be. Scleroderma reflects a Tank pattern carried so long that the body begins reinforcing itself against a load it no longer expects to end."
+  },
+  {
+    "id": 110,
+    "name": "Polymyalgia rheumatica",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "polymyalgia rheumatica",
+      "PMR",
+      "widespread muscle stiffness",
+      "shoulder and hip stiffness"
+    ],
+    "msg": "Stiffness and aching settling into the shoulders and hips — the places we brace and carry from. The Tank pattern in a body that has spent years holding steady for others."
+  },
+  {
+    "id": 111,
+    "name": "Stress fractures / weak bones",
+    "cat": "Musculoskeletal",
+    "past": "T",
+    "synonyms": [
+      "stress fracture",
+      "recurrent fractures",
+      "weak bones",
+      "fragile bones",
+      "bone breaks easily"
+    ],
+    "msg": "Structure giving way under repeated load rather than a single trauma. The Tank pattern at the skeletal level: the body has been asked to bear weight for longer than its reserves were built to sustain."
+  },
+  {
+    "id": 112,
+    "name": "Chronic masking / concealing your authentic self",
+    "cat": "Mental & Emotional",
+    "past": "A",
+    "synonyms": [
+      "masking",
+      "camouflaging",
+      "hiding who I am",
+      "suppressing my true self",
+      "pretending to be someone else",
+      "code-switching",
+      "passing",
+      "autism masking",
+      "ADHD masking",
+      "hiding my identity"
+    ],
+    "msg": "Presenting a version of yourself curated for approval, safety, or acceptance — while the self underneath goes unseen. The Audition pattern: performing an identity built for other people's comfort, at the cost of the one that's actually yours."
+  },
+  {
+    "id": 113,
+    "name": "Rejection sensitivity / fear of being seen as different",
+    "cat": "Mental & Emotional",
+    "past": "P",
+    "synonyms": [
+      "rejection sensitivity",
+      "rejection sensitive dysphoria",
+      "RSD",
+      "fear of judgment",
+      "fear of being different",
+      "fear of not fitting in",
+      "fear of standing out"
+    ],
+    "msg": "A nervous system braced for the moment your difference gets noticed and punished. The Pairing pattern: vigilance shaped by real experiences of being met with correction instead of curiosity."
+  },
+  {
+    "id": 114,
+    "name": "Feeling chronically misunderstood or unseen",
+    "cat": "Mental & Emotional",
+    "past": "T",
+    "synonyms": [
+      "feeling misunderstood",
+      "feeling unseen",
+      "nobody gets me",
+      "invisible",
+      "feeling invalidated",
+      "not being believed",
+      "dismissed by others"
+    ],
+    "msg": "Carrying an identity that the people around you have never fully recognized. The Tank pattern: the exhausting, invisible labor of being present in a world that keeps responding to someone you're not."
+  },
+  {
+    "id": 115,
+    "name": "Exhaustion from not being given grace for who you actually are",
+    "cat": "Mental & Emotional",
+    "past": "A",
+    "synonyms": [
+      "not given grace",
+      "forced to be normal",
+      "pressure to be conventional",
+      "pressure to conform",
+      "can't be myself",
+      "expected to be someone I'm not",
+      "identity pressure"
+    ],
+    "msg": "The particular exhaustion of having to earn basic understanding instead of receiving it — managing how you're perceived because who you actually are hasn't been met with room to simply exist. The Audition pattern, worn by identity itself rather than behavior alone."
+  },
+  {
+    "id": 116,
+    "name": "Female pattern hair loss / postpartum hair loss",
+    "cat": "Skin & Hair",
+    "past": "T",
+    "synonyms": [
+      "female pattern hair loss",
+      "postpartum hair loss",
+      "female hair thinning",
+      "hormonal hair loss",
+      "perimenopause hair loss",
+      "hair loss after having a baby",
+      "hair loss after pregnancy",
+      "widening part",
+      "thinning at the crown",
+      "menopause hair loss"
+    ],
+    "msg": "Hair loss shows up differently for women — often after giving everything to a pregnancy, a postpartum year, or a hormonal shift no one prepared you for. The Tank pattern: the body prioritizing survival and depleting the non-essential first, and hair is rarely treated as essential once the system goes into triage."
+  }
+]
