@@ -1,8 +1,6 @@
 import { ImageResponse } from '@vercel/og';
 import conditions from '../lib/conditions.json';
 
-export const config = { runtime: 'edge' };
-
 const COLORS = { P: '#00c8b4', A: '#c9a84c', S: '#e07060', T: '#8b7ec8' };
 const PATTERN_NAMES = { P: 'The Pairing', A: 'The Audition', S: 'The Squeeze', T: 'The Tank' };
 const PATTERN_ORDER = ['P', 'A', 'S', 'T'];
