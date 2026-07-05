@@ -598,7 +598,7 @@ function buildResultPayload(){
   const holisticHeadline = holisticPlain.headline || '';
   const holisticParagraphs = [holisticPlain.p1, holisticPlain.p2, holisticPlain.p3, holisticPlain.p4];
 
-  const conditionBoxImageUrl = 'https://bodyspeaks.icu-1111.com/api/condition-boxes?ids=' + items.map(c=>c.id).join(',');
+  const conditionBoxImageUrl = 'https://bodyspeaks.icu-1111.com/api/condition-boxes.js?ids=' + items.map(c=>c.id).join(',');
 
   return {
     // Make.com / Google Docs fields

@@ -1,5 +1,5 @@
-const { ImageResponse } = require('@vercel/og');
-const conditions = require('../lib/conditions.json');
+import { ImageResponse } from '@vercel/og';
+import conditions from '../lib/conditions.json' with { type: 'json' };
 
 const COLORS = { P: '#00c8b4', A: '#c9a84c', S: '#e07060', T: '#8b7ec8' };
 const PATTERN_NAMES = { P: 'The Pairing', A: 'The Audition', S: 'The Squeeze', T: 'The Tank' };
@@ -31,7 +31,7 @@ function estimateBoxHeight(msg) {
   return BOX_PADDING * 2 + NAME_LINE_HEIGHT + (lines * MSG_LINE_HEIGHT) + 8;
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   const url = new URL(req.url, 'https://bodyspeaks.icu-1111.com');
   const idsParam = url.searchParams.get('ids') || '';
   const ids = idsParam.split(',').map(s => parseInt(s.trim(), 10)).filter(Boolean);
@@ -99,4 +99,4 @@ module.exports = async function handler(req, res) {
   const buffer = Buffer.from(await imageResponse.arrayBuffer());
   res.setHeader('Content-Type', 'image/png');
   res.status(200).send(buffer);
-};
+}
