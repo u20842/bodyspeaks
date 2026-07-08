@@ -204,6 +204,8 @@ h1 em{font-style:italic;color:var(--teal);}
 .pay-status{margin-top:0.9rem;font-size:0.72rem;text-align:center;color:var(--text-mid);min-height:1.2em;}
 .pay-status.error{color:#e07060;}
 .pay-status.success{color:var(--cream);font-size:0.95rem;font-weight:600;line-height:1.7;padding:0.4rem 0;}
+.pay-upsell{margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--border-mid);text-align:center;}
+.pay-upsell p{font-size:0.78rem;color:var(--text-mid);margin-bottom:0.8rem;}
 footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;font-size:0.63rem;color:var(--text-light);flex-wrap:wrap;gap:0.5rem;}
 footer a{color:var(--teal);text-decoration:none;}
 
@@ -766,7 +768,7 @@ function showToast(msg){
 // ═══════════════════════════════════════════════
 let squareConfig = null;
 let pendingTier = null;
-const TIER_LABELS = { standard: 'Standard — $37', full: 'Full — $57' };
+const TIER_LABELS = { standard: 'Standard — $37', full: 'Full — $57', full_upgrade: 'Full — $20 more' };
 
 async function fetchSquareConfig(){
   if (squareConfig) return squareConfig;
@@ -857,8 +859,8 @@ async function submitPayment(){
     }
 
     // Success — update tier and re-send results with the upgraded tier
-    currentResultTier = pendingTier;
-    status.textContent = "You're all set! Your " + (pendingTier === 'full' ? 'Full' : 'Standard') + " results have been emailed to you — check your inbox in the next few minutes.";
+    currentResultTier = (pendingTier === 'full_upgrade') ? 'full' : pendingTier;
+    status.textContent = "You're all set! Your " + (currentResultTier === 'full' ? 'Full' : 'Standard') + " results have been emailed to you — check your inbox in the next few minutes.";
     status.className = 'pay-status success';
     submitBtn.style.display = 'none';
     document.getElementById('upgradeGrid').style.display = 'none';
@@ -866,6 +868,13 @@ async function submitPayment(){
     if (squareCard) { try{ await squareCard.destroy(); }catch(e){} squareCard = null; }
 
     if (uEmail) sendResultsData();
+
+    if (pendingTier === 'standard') {
+      const upsell = document.createElement('div');
+      upsell.className = 'pay-upsell';
+      upsell.innerHTML = '<p>Want the deeper picture too?</p><button class="btn upgrade-btn" onclick="openUpgrade(\'full_upgrade\')">Upgrade to Full — $20 more</button>';
+      document.getElementById('payPanel').appendChild(upsell);
+    }
 
   } catch(e){
     console.error('Payment error', e);

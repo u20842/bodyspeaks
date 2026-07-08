@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'sourceId and tier are required' });
   }
 
-  const PRICES = { standard: 3700, full: 5700 };
+  const PRICES = { standard: 3700, full: 5700, full_upgrade: 2000 }; // cents, USD;
   const amount = PRICES[tier];
 
   if (!amount) {
