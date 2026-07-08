@@ -26,6 +26,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-links{display:flex;align-items:center;gap:1.2rem;}
 .nav-brand{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--teal);text-decoration:none;}
 .nav-link{font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;border:1px solid var(--border-mid);padding:0.4rem 1rem;transition:all 0.3s;}
 .nav-link:hover{border-color:var(--teal);color:var(--teal);}
@@ -204,7 +205,11 @@ footer a{color:var(--teal);text-decoration:none;}
 
 <nav>
   <a href="https://icu-1111.com" class="nav-brand">ICU-1111 · Body Speaks</a>
-  <a href="https://icu-1111.com" class="nav-link">← Back</a>
+  <div class="nav-links">
+    <a href="javascript:void(0)" class="nav-link" onclick="goBack()">← Back</a>
+    <a href="https://icu-1111.com" class="nav-link">ICU-1111</a>
+    <a href="https://anjuredheendran.com" class="nav-link">anjuredheendran.com</a>
+  </div>
 </nav>
 
 <!-- ═══════════════════════════════════ -->
@@ -563,6 +568,22 @@ function toResults(skip){
 function show(id){
   document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+}
+
+function goBack(){
+  const p2 = document.getElementById('p2');
+  const p3 = document.getElementById('p3');
+  if(p3.classList.contains('active')){
+    show('p2');
+    document.getElementById('prog').style.width='60%';
+    window.scrollTo(0,0);
+  } else if(p2.classList.contains('active')){
+    show('p1');
+    document.getElementById('prog').style.width='25%';
+    window.scrollTo(0,0);
+  } else {
+    window.location.href = 'https://icu-1111.com';
+  }
 }
 
 function reset(){
