@@ -795,7 +795,10 @@ function loadSquareSDK(environment){
 }
 
 async function openUpgrade(tier){
+  if (tier === 'full_upgrade' && currentResultTier === 'full') return;
   pendingTier = tier;
+  const existingUpsell = document.querySelector('.pay-upsell');
+  if (existingUpsell) existingUpsell.remove();
   const panel = document.getElementById('payPanel');
   const status = document.getElementById('payStatus');
   const submitBtn = document.getElementById('paySubmitBtn');
