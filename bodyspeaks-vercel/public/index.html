@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Body Speaks · ICU-1111</title>
 <meta name="description" content="Your body has been trying to tell you something. Discover what your symptoms may be communicating — and which pattern is running underneath.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RR6WWE2DCF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RR6WWE2DCF');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -388,7 +396,7 @@ footer a{color:var(--teal);text-decoration:none;}
         <div class="cta-eye">The Next Step</div>
         <h2>You've seen the pattern.<br>Now let's <em>work with it.</em></h2>
         <p>A 30-minute discovery call with Anju to identify exactly where you are in the PAST Framework, what's keeping the pattern in place, and what working together could look like.</p>
-        <a href="https://calendly.com/icu1111/30-min-discovery-call" class="btn-cal" target="_blank">Book Your Free Discovery Call →</a>
+        <a href="https://calendly.com/icu1111/30-min-discovery-call" class="btn-cal" target="_blank" onclick="if(typeof gtag==='function'){gtag('event','close_convert_lead',{tier:currentResultTier});}">Book Your Free Discovery Call →</a>
         <p class="cta-note">No pressure. No pitch. Just clarity.</p>
       </div>
 
@@ -624,6 +632,15 @@ function toResults(skip){
   show('p3');
   document.getElementById('prog').style.width='100%';
   window.scrollTo(0,0);
+
+  // GA4: fires the moment someone completes the Body Map quiz and sees their free result on screen
+  if (typeof gtag === 'function') {
+    gtag('event', 'qualify_lead', {
+      symptom_count: sel.size,
+      has_email: !!uEmail
+    });
+  }
+
   if(!skip && uEmail) sendResultsData();
 }
 
@@ -870,6 +887,19 @@ async function submitPayment(){
 
     if (!chargeRes.ok || !chargeData.success){
       throw new Error(chargeData.details || chargeData.error || 'Payment was declined');
+    }
+
+    // GA4: fires immediately after a successful Square payment.
+    // TIER_PRICE_USD mirrors the PRICES map (in cents) in api/charge-tier.js —
+    // keep these in sync if pricing ever changes.
+    if (typeof gtag === 'function') {
+      const TIER_PRICE_USD = { standard: 37, full: 57, full_upgrade: 20 };
+      gtag('event', 'purchase', {
+        transaction_id: chargeData.paymentId || ('bodyspeaks-' + Date.now()),
+        value: TIER_PRICE_USD[pendingTier],
+        currency: 'USD',
+        tier: pendingTier
+      });
     }
 
     // Success — update tier and re-send results with the upgraded tier
