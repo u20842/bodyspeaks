@@ -546,6 +546,7 @@ let activeCat = 'All';
 let uName = '', uLName = '', uEmail = '';
 let currentResultTier = 'free';
 let squareInstance = null, squareCard = null, sdkLoadedEnv = null;
+let cardReusable = false; // true when squareCard is alive and ready to reuse for an upsell charge
 
 // ═══════════════════════════════════════════════
 // INIT
@@ -802,6 +803,7 @@ async function openUpgrade(tier){
   const panel = document.getElementById('payPanel');
   const status = document.getElementById('payStatus');
   const submitBtn = document.getElementById('paySubmitBtn');
+  const cardContainer = document.getElementById('card-container');
 
   document.getElementById('payPanelTitle').textContent = 'Unlock ' + TIER_LABELS[tier];
   status.textContent = '';
@@ -812,15 +814,23 @@ async function openUpgrade(tier){
   panel.style.display = 'block';
   panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+  // Reuse the already-tokenizable card from the Standard purchase — skip re-init entirely
+  if (tier === 'full_upgrade' && cardReusable && squareCard) {
+    cardContainer.style.display = 'block';
+    return;
+  }
+
   try{
     const config = await fetchSquareConfig();
     await loadSquareSDK(config.environment);
 
     if (squareCard) { try{ await squareCard.destroy(); }catch(e){} squareCard = null; }
+    cardReusable = false;
 
     squareInstance = window.Square.payments(config.applicationId, config.locationId);
     squareCard = await squareInstance.card();
     await squareCard.attach('#card-container');
+    cardContainer.style.display = 'block';
   } catch(e){
     console.error('Square init error', e);
     status.textContent = 'Could not load the payment form. Please try again.';
@@ -831,6 +841,7 @@ async function openUpgrade(tier){
 function closeUpgrade(){
   document.getElementById('payPanel').style.display = 'none';
   if (squareCard) { try{ squareCard.destroy(); }catch(e){} squareCard = null; }
+  cardReusable = false;
   pendingTier = null;
 }
 
@@ -868,7 +879,15 @@ async function submitPayment(){
     submitBtn.style.display = 'none';
     document.getElementById('upgradeGrid').style.display = 'none';
 
-    if (squareCard) { try{ await squareCard.destroy(); }catch(e){} squareCard = null; }
+    if (pendingTier === 'standard') {
+      // Keep the card alive (just hidden) in case they upgrade to Full in this session
+      document.getElementById('card-container').style.display = 'none';
+      cardReusable = true;
+    } else {
+      // Full purchase (direct or upgrade) — nothing left to pay for, clean up
+      if (squareCard) { try{ await squareCard.destroy(); }catch(e){} squareCard = null; }
+      cardReusable = false;
+    }
 
     if (uEmail) sendResultsData();
 
