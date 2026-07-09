@@ -104,6 +104,8 @@ h1 em{font-style:italic;color:var(--teal);}
 .form-input{width:100%;padding:0.88rem 1.1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-mid);color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.83rem;font-weight:300;outline:none;transition:all 0.3s;}
 .form-input::placeholder{color:var(--text-light);}
 .form-input:focus{border-color:var(--teal);background:rgba(0,200,180,0.04);}
+.form-error{font-size:0.68rem;color:var(--S);text-align:center;margin:-0.3rem 0 1rem;letter-spacing:0.02em;display:none;}
+.form-error.show{display:block;}
 .privacy{font-size:0.61rem;color:var(--text-light);text-align:center;margin-top:0.9rem;line-height:1.6;}
 
 /* RESULTS */
@@ -302,8 +304,34 @@ footer a{color:var(--teal);text-decoration:none;}
         <label class="form-label" for="femail">Email Address</label>
         <input type="email" class="form-input" id="femail" placeholder="Your email address">
       </div>
+      <p class="form-error" id="p2FormError">Please enter your name and email to continue.</p>
       <button class="btn btn-primary" onclick="toResults(false)">Reveal My Free Pattern Analysis →</button>
       <p class="privacy">🔒 No spam. Your results will be emailed so you can reference them. Unsubscribe anytime.</p>
+
+      <style>
+        .secondary-cta-wrapper{margin-top:28px;padding-top:24px;border-top:1px solid rgba(0,200,180,0.15);font-family:'Montserrat',sans-serif;}
+        .secondary-cta-framing{text-align:center;color:rgba(255,255,255,0.55);font-size:14px;letter-spacing:0.02em;margin-bottom:18px;}
+        .secondary-cta-button{display:block;width:100%;box-sizing:border-box;background:transparent;border:1.5px solid #00c8b4;color:#00c8b4;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.03em;text-transform:uppercase;padding:16px 24px;border-radius:4px;cursor:pointer;transition:background 0.2s ease,color 0.2s ease;margin-bottom:10px;text-align:center;}
+        .secondary-cta-button:hover{background:rgba(0,200,180,0.1);}
+        .secondary-cta-button.full-tier{border-color:#c9a84c;color:#c9a84c;}
+        .secondary-cta-button.full-tier:hover{background:rgba(201,168,76,0.1);}
+        .secondary-cta-preview{font-family:'Montserrat',sans-serif;font-weight:400;font-size:13px;line-height:1.5;color:rgba(255,255,255,0.45);text-align:center;margin:0 0 22px 0;padding:0 12px;}
+        .secondary-cta-preview:last-of-type{margin-bottom:0;}
+      </style>
+
+      <div class="secondary-cta-wrapper">
+        <p class="secondary-cta-framing">Already know you want more than the free reveal?</p>
+
+        <button type="button" class="secondary-cta-button standard-tier" onclick="if(toResults(false, false)) openUpgrade('standard')">
+          I'm Ready for the Deeper Read — $37
+        </button>
+        <p class="secondary-cta-preview">Domain-by-domain breakdown of what your symptoms are connected to, and how they trace back to specific patterns.</p>
+
+        <button type="button" class="secondary-cta-button full-tier" onclick="if(toResults(false, false)) openUpgrade('full')">
+          I'm Ready for the Full Picture and the Plan — $57
+        </button>
+        <p class="secondary-cta-preview">Everything in Standard, plus where this is likely heading if left unaddressed — and a personal note from Anju on what to do next.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -624,7 +652,17 @@ function toEmail(){
   window.scrollTo(0,0);
 }
 
-function toResults(skip){
+function validateEmailCapture(){
+  const fname = document.getElementById('fname').value.trim();
+  const femail = document.getElementById('femail').value.trim();
+  const err = document.getElementById('p2FormError');
+  const valid = !!fname && !!femail;
+  if(err) err.classList.toggle('show', !valid);
+  return valid;
+}
+
+function toResults(skip, sendFreeEmail = true){
+  if(!skip && !validateEmailCapture()) return false;
   uName  = skip ? '' : document.getElementById('fname').value.trim();
   uLName = skip ? '' : document.getElementById('flname').value.trim();
   uEmail = skip ? '' : document.getElementById('femail').value.trim();
@@ -641,7 +679,8 @@ function toResults(skip){
     });
   }
 
-  if(!skip && uEmail) sendResultsData();
+  if(!skip && uEmail && sendFreeEmail) sendResultsData();
+  return true;
 }
 
 function show(id){
