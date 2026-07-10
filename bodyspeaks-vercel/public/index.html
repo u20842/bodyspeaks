@@ -382,26 +382,16 @@ footer a{color:var(--teal);text-decoration:none;}
         <h2>This is your <em>free</em> pattern summary.<br>Want the full picture?</h2>
         <p class="upgrade-sub">Unlock domain scores, framework connections, and — with Full — a predictive trajectory analysis plus a personal note from Anju based on your results.</p>
 
-        <div class="upgrade-grid" id="upgradeGrid">
-          <div class="upgrade-card">
-            <div class="upgrade-tier">Standard</div>
-            <div class="upgrade-price">$37</div>
-            <ul class="upgrade-feats">
-              <li>Domain scores</li>
-              <li>Framework connections</li>
-            </ul>
-            <button class="secondary-cta-button standard-tier" onclick="openUpgrade('standard')">Unlock Standard — $37</button>
-          </div>
-          <div class="upgrade-card upgrade-card-full">
-            <div class="upgrade-tier">Full</div>
-            <div class="upgrade-price">$57</div>
-            <ul class="upgrade-feats">
-              <li>Everything in Standard</li>
-              <li>Predictive trajectory analysis</li>
-              <li>Personal note from Anju</li>
-            </ul>
-            <button class="secondary-cta-button full-tier" onclick="openUpgrade('full')">Unlock Full — $57</button>
-          </div>
+        <div class="secondary-cta-wrapper" id="upgradeGrid" style="margin-top:0;padding-top:0;border-top:none;">
+          <button type="button" class="secondary-cta-button standard-tier" onclick="openUpgrade('standard')">
+            Unlock Standard — $37
+          </button>
+          <p class="secondary-cta-preview">Domain scores and framework connections mapped to what you selected.</p>
+
+          <button type="button" class="secondary-cta-button full-tier" onclick="openUpgrade('full')">
+            Unlock Full — $57
+          </button>
+          <p class="secondary-cta-preview">Everything in Standard, plus a predictive trajectory analysis and a personal note from Anju based on your results.</p>
         </div>
 
         <!-- Card entry panel (hidden until a tier is chosen) -->
